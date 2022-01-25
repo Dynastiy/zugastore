@@ -62,6 +62,6 @@ export default {
 
 <style scoped>
 .router-link-exact-active{
-  color: red !important;
+  color: #000 !important;
 }
 </style>
