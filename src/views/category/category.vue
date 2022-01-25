@@ -22,7 +22,7 @@
                 <p class="small text-warning text-capitalize"> {{ product.developer }} </p>
                 <p class="small text-info"> {{ product.last_update }} </p>
                 </div>
-                <router-link :to=" '/product/'+product.id "><button class="btn rounded-0 bg-info w-100 font-weight-bold text-white text-uppercase"> {{ product.license }} </button></router-link>
+                <router-link :to=" '/product/'+product.id "><button class="btn rounded-0 bg-info w-100 font-weight-bold text-white text-uppercase"> <span v-if="product.license === 'paid' "> ${{ product.price }}</span> <span v-else>FREE</span></button></router-link>
             </div>
         </div>
     </div>
