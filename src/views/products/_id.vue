@@ -1,0 +1,191 @@
+<template>
+  <div>
+    <div class="bg-white">
+      <div class="container py-5">
+        <div class="view mt-5">
+          
+          <div class="left__side">
+            
+            <div class="top__data d-flex" style="gap: 10px">
+              <div class="feat__image">
+                <img src="https://i.pinimg.com/originals/cd/c5/67/cdc567bbddd7d05763248ee364576471.jpg" alt="">
+              </div>
+              <div class="content">
+                
+                <h6 class=" font-weight-bold mb-3"> {{ product.name }} </h6>
+                <p class=" mb-2">Rating: <span class="font-weight-bold">4.36</span> (Votes: 11)</p>
+              </div>
+            </div>
+            <div class="mid__content">
+              <div class="mt-5">
+                <h5 class=" font-weight-bold">
+                Description
+              </h5>
+              <p> {{ product.description }} </p>
+              </div>
+              <div class="mt-5">
+                <h5 class=" mb-3 font-weight-bold">
+                Tags
+              </h5>
+              <button class="btn btn__tag btn-outline-info py-1 px-3" v-if="product.tag"> {{ product.tag.name }} </button>
+              </div>
+               <div class="mt-5">
+                <h5 class=" font-weight-bold mb-4">
+                User Reviews
+                </h5>
+                <div v-if="reviews.length === 0" class="alert alert-info" role="alert">
+                  No reviews for this product yet
+                </div>
+                <div>
+                  <div class="review_content mb-5" v-for="review in reviews" :key="review.id">
+                    <div class="d-flex">
+                      <div v-if="review" class="avatar mr-3 text-uppercase" :class="[review.reviewer_name.charAt(0)]"  >
+                        {{ review.reviewer_name.charAt(0) }}
+                      </div>
+                      <div>
+                        <h6 class="font-weight-bold text-capitalize mb-1"> {{review.reviewer_name }} </h6>
+                        <div class="d-flex align-items-center">
+                            <star-rating v-model="review.rating"
+                            v-bind:max-rating="5"
+                            inactive-color="#000"
+                            active-color="#ffd700"
+                            v-bind:star-size="13" :show-rating = false></star-rating>
+                          <!-- <small class="text-muted">Stars</small> -->
+                          <small class="text-muted ml-4"> {{ review.created_at }} </small>
+                        </div>
+                        <div class="main_content mt-3">
+                          <p> {{ review.comment }} </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right__side">
+            <button class="btn w-100 bg-info rounded-lg font-weight-bold text-white py-3 ">DOWNLOAD</button>
+            <div>
+              <p v-if="product.category" class="text-capitalize"><span class="font-weight-bold">Category:</span> {{ product.category.category_name }}  </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">Platform:</span> {{ product.platform }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">Developer:</span> {{ product.developer }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">File Size:</span> {{ product.file_size }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">Visits:</span> {{ product.visits }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">License:</span>  {{ product.license }} </p>
+              <hr class="hr bg-info">
+              <p><span class="font-weight-bold">Last Updated:</span> {{ product.last_update }} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import StarRating from 'vue-star-rating'
+export default {
+  name: 'IdPage',
+  components: {
+  StarRating
+},
+data(){
+  return {
+    product: {},
+    id: this.$route.params.id,
+    reviews: []
+  }
+},
+  
+ methods:{
+    async getSingleProduct() {
+        try {
+          const res = await this.$store.dispatch("getSingleProduct", this.id);
+          console.log(res.product);
+          this.product = res.product
+          console.log(res.product.reviews);
+          this.reviews = res.product.reviews;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+  },
+  async created(){
+    this.getSingleProduct();
+  }
+}
+</script>
+
+<style>
+* {
+  font-family: 'Work Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+.a, .b, .c, .d, .e, .A, .B, .C, .D, .E {
+    background-color: #FF0000 ;
+    color: #fff;
+    }
+    .f, .g, .h, .i, .j, .J, .I, .H, .G, .F {
+        background-color: #FFB20F;
+        color: #fff;
+    }
+    .K, .L, .M, .N, .O, .P, .m, .n, .o, .p, .k, .l {
+        background-color: #000;
+        color: #fff;
+    }
+    .q, .r, .s, .t, .u, .Q, .R, .S, .T, .U {
+        background-color: #01445f ;
+        color: #fff;
+    }
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+.right__side p{
+  color: #000;
+  margin-top: 1rem;
+  
+}
+.view {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.btn__tag {
+  background: #17a3b82c;
+  color: #000;
+}
+.feat__image img {
+  object-fit: cover;
+    height: 100px;
+    width: 120px;
+}
+a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 990px){
+  .view {
+    display: unset;
+  }
+  .view div {
+    margin-bottom: 20px;
+  }
+}
+</style>
