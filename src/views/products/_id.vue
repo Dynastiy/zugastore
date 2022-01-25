@@ -119,7 +119,7 @@ data(){
         // alert(this.id)
           // const res = await axios.get("http://zuga.divcommanifold.com/api/download-app/"+this.id)
           axios({
-                    url: "http://zuga.divcommanifold.com/api/download-app/"+this.id,
+                    url: "https://zuga.divcommanifold.com/api/download-app/"+this.id,
                     method: 'GET',
                     responseType: 'blob',
                 }).then((response) => {

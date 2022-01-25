@@ -50,7 +50,7 @@ export default {
   //   self.productCategory = res.data.category.products
     var self=this;
       axios
-       .get("http://zuga.divcommanifold.com/api/find-category/"+this.id)
+       .get("https://zuga.divcommanifold.com/api/find-category/"+this.id)
        .then(function (response) {
            self.productCategory = response.data.category.products; // Data existed
            console.log(response.data.category.products);
