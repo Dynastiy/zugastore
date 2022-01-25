@@ -2,7 +2,7 @@
     <div>
         <div class="d-flex align-items-center ">
             <router-link to="/" class="font-weight-bold text-dark mr-1">ALL PRODUCTS </router-link>
-            <!-- <span class="text-uppercase text-muted small"> >>{{ category.category_name }} </span>  -->
+            <span class="text-uppercase text-muted small"> >>{{ category.category_name }} </span> 
             <!-- <p class="text-info">More <i class="fa fa-angle-right" aria-hidden="true"></i> </p> -->
         </div>
         <hr class="hr my-4">
@@ -59,6 +59,7 @@ export default {
        .get("https://zuga.divcommanifold.com/api/find-category/"+this.id)
        .then(function (response) {
            self.productCategory = response.data.category.products; // Data existed
+           self.category = response.data.category
            console.log(response.data.category.products);
            
        })
