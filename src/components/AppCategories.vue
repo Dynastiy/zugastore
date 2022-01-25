@@ -48,7 +48,6 @@ export default {
           console.log(res.categories);
           this.categories = res.categories
         } catch (error) {
-          alert(error);
           console.log(error);
           
         }
