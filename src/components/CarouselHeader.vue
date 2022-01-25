@@ -1,5 +1,6 @@
 <template>
-  <!-- <div class="mb-3">
+ <div>
+    <div class="mb-4">
     <div
       id="carouselExampleIndicators"
       class="carousel slide"
@@ -44,13 +45,8 @@
         <span class="sr-only">Next</span>
       </button>
     </div>
-  </div> -->
-
-
-
-  <div>
-    
   </div>
+ </div>
 </template>
 
 <style scoped>
@@ -59,7 +55,6 @@
     opacity: 0.3;
     height: 400px;
     border-radius: 5px;
-    width: 100% !important;
   }
   .carousel-item {
     border-radius: 5px;

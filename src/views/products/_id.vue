@@ -2,13 +2,13 @@
   <div>
     <div class="bg-white">
       <div class="container py-5">
-        <div class="view mt-5">
+        <div class="view">
           
           <div class="left__side">
             
             <div class="top__data d-flex" style="gap: 10px">
               <div class="feat__image">
-                <img src="https://i.pinimg.com/originals/cd/c5/67/cdc567bbddd7d05763248ee364576471.jpg" alt="">
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" alt="">
               </div>
               <div class="content">
                 
@@ -51,7 +51,7 @@
                             active-color="#ffd700"
                             v-bind:star-size="13" :show-rating = false></star-rating>
                           <!-- <small class="text-muted">Stars</small> -->
-                          <small class="text-muted ml-4"> {{ review.created_at }} </small>
+                          <small class="text-muted ml-4"> {{ review.created_at | formatDate }} </small>
                         </div>
                         <div class="main_content mt-3">
                           <p> {{ review.comment }} </p>
@@ -64,7 +64,7 @@
             </div>
           </div>
           <div class="right__side">
-            <button class="btn w-100 bg-info rounded-lg font-weight-bold text-white py-3 ">DOWNLOAD</button>
+            <button class="btn w-100 bg-info rounded-lg font-weight-bold text-white py-3" @click="downloadApp">DOWNLOAD</button>
             <div>
               <p v-if="product.category" class="text-capitalize"><span class="font-weight-bold">Category:</span> {{ product.category.category_name }}  </p>
               <hr class="hr bg-info">
@@ -76,9 +76,9 @@
               <hr class="hr bg-info">
               <p class="text-capitalize"><span class="font-weight-bold">Visits:</span> {{ product.visits }} </p>
               <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">License:</span>  {{ product.license }} </p>
+              <p class="text-capitalize"><span class="font-weight-bold">License:</span>  <span v-if="product.license === 'paid' "> ${{ product.price }}</span> <span v-else>FREE</span>  </p>
               <hr class="hr bg-info">
-              <p><span class="font-weight-bold">Last Updated:</span> {{ product.last_update }} </p>
+              <p><span class="font-weight-bold">Last Updated:</span> {{ product.last_update | formatDate }} </p>
             </div>
           </div>
         </div>
@@ -88,7 +88,8 @@
 </template>
 
 <script>
-import StarRating from 'vue-star-rating'
+import axios from 'axios';
+import StarRating from 'vue-star-rating';
 export default {
   name: 'IdPage',
   components: {
@@ -114,9 +115,30 @@ data(){
           console.log(error);
         }
       },
+      async downloadApp(){
+        // alert(this.id)
+          // const res = await axios.get("http://zuga.divcommanifold.com/api/download-app/"+this.id)
+          axios({
+                    url: "http://zuga.divcommanifold.com/api/download-app/"+this.id,
+                    method: 'GET',
+                    responseType: 'blob',
+                }).then((response) => {
+                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                     var fURL = document.createElement('a');
+                    console.log(response.data);
+                     fURL.href = fileURL;
+                     fURL.setAttribute('download', `${this.product.name}.apk`);
+                     document.body.appendChild(fURL);
+    
+                     fURL.click();
+                });
+          
+    // self.downloadProduct = res.data
+      }
   },
   async created(){
     this.getSingleProduct();
+      
   }
 }
 </script>
@@ -172,9 +194,9 @@ h1, h2, h3, h4, h5, h6, p {
   color: #000;
 }
 .feat__image img {
-  object-fit: cover;
+  /* object-fit: contain; */
     height: 100px;
-    width: 120px;
+    width: 100px;
 }
 a:hover {
   text-decoration: none;
