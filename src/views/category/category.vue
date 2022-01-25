@@ -6,10 +6,13 @@
             <!-- <p class="text-info">More <i class="fa fa-angle-right" aria-hidden="true"></i> </p> -->
         </div>
         <hr class="hr my-4">
-        <CarouselHeader/>
+        <!-- <CarouselHeader/> -->
+         <div v-if="productCategory.length === 0" class="alert alert-danger" role="alert">
+                  No apps here
+                </div>
         <div class="new__apps">
             <div class="app__list" v-for="product in productCategory" :key="product.id">
-                <img :src="product.photo_one" alt="">
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_two" alt="">
                 <div class="p-2">
                    <router-link :to=" '/products/'+product.id "> <h6 class="text-white mt-2 font-weight-bold">  {{ product.name }} </h6></router-link>
                     <hr class="hr">
@@ -23,10 +26,11 @@
 </template>
 
 <script>
-import CarouselHeader from '@/components/CarouselHeader.vue'
+import axios from 'axios';
+// import CarouselHeader from '@/components/CarouselHeader.vue'
 export default {
     components:{
-        CarouselHeader
+        // CarouselHeader
     },
   data(){
     return {
@@ -36,19 +40,24 @@ export default {
     }
   },
   methods:{
-    async getProducts() {
-        try {
-          const res = await this.$store.dispatch("getByCategory", this.id);
-          console.log(res.category.products);
-          this.productCategory = res.category.products
-          this.category = res.category
-        } catch (error) {
-          console.log(error);
-        }
-      },
+    // async 
   },
-  async created(){
-    this.getProducts();
+  
+ async created() {
+  //  var self = this;
+  //   const res = await axios.get("http://zuga.divcommanifold.com/api/find-category/"+this.id)
+  //   console.log(res.data.category.products);
+  //   self.productCategory = res.data.category.products
+    var self=this;
+      axios
+       .get("http://zuga.divcommanifold.com/api/find-category/"+this.id)
+       .then(function (response) {
+           self.productCategory = response.data.category.products; // Data existed
+           console.log(response.data.category.products);
+       })
+       .catch(function (err) {
+           console.log(err);
+       });
   }
 }
 </script>
@@ -57,7 +66,7 @@ export default {
 <style scoped>
 .new__apps img {
     object-fit: cover;
-    height: 200px;
+    height: 100px;
     width: 100%;
     /* width: ; */
     /* border-radius: 20px; */

@@ -12,9 +12,12 @@
                   <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="collapsibleNavId">
-                  <ul class="navbar-nav mr-auto  mt-lg-0">
-                      <li v-for="category in categories" :key="category.id" class="nav-item">
-                         <router-link class="text-white font-weight-bold nav-link text-uppercase" :to="'/product/category/'+category.id"> {{ category.category_name }} </router-link> </li>
+                  <ul class="navbar-nav mr-auto  mt-lg-0" style="gap:20px">
+                      <li v-for="category in categories" :key="category.id" class="nav-item d-flex align-items-center ">
+                          <span> <img :src=" 'https://zuga.divcommanifold.com/'+category.icon_image " alt="" width="15"> </span>
+                           <router-link class="text-white font-weight-bold nav-link text-uppercase" :to=" '/category/'+category.id">
+                            {{ category.category_name }} </router-link> 
+                      </li>
                   </ul>
               </div>
           </nav>
@@ -42,7 +45,7 @@ export default {
     async getCategories() {
         try {
           const res = await this.$store.dispatch("getCategories");
-        //   console.log(res.categories);
+          console.log(res.categories);
           this.categories = res.categories
         } catch (error) {
           alert(error);
@@ -56,3 +59,10 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+.router-link-exact-active{
+  color: red !important;
+}
+</style>

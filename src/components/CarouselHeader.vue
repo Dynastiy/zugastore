@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-3">
+  <!-- <div class="mb-3">
     <div
       id="carouselExampleIndicators"
       class="carousel slide"
@@ -44,6 +44,12 @@
         <span class="sr-only">Next</span>
       </button>
     </div>
+  </div> -->
+
+
+
+  <div>
+    
   </div>
 </template>
 

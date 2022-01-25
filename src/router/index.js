@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/products/index.vue";
+import Home from "../views/index.vue";
 
 Vue.use(VueRouter);
 
@@ -11,24 +11,28 @@ const routes = [
     component: Home,
   },
       {
-        path: "/apps",
+        path: "/category",
+        name: "category",
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
           import(
-            /* webpackChunkName: "about" */ "../views/products/index.vue"
+            /* webpackChunkName: "about" */ "../views/category/index.vue"
           ),
-      },
-      {
-        path: "/product/category/:id",
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-          import(
-            /* webpackChunkName: "about" */ "../views/products/category.vue"
-          ),
+          children:[
+            {
+              path: "/category/:id",
+              name: "category id",
+              // route level code-splitting
+              // this generates a separate chunk (about.[hash].js) for this route
+              // which is lazy-loaded when the route is visited.
+              component: () =>
+                import(
+                  /* webpackChunkName: "about" */ "../views/category/category.vue"
+                ),
+        },
+          ],
   },
   {
     path: "/product/:id",

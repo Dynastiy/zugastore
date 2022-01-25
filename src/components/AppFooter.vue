@@ -7,8 +7,7 @@
             <h3>app portal</h3>
             <ul class="list-unstyled links">
               <li><a href="#">Site Description</a></li>
-              <li><router-link to="/">Submit your App</router-link></li>
-             
+              <li><a href="javascript:void(0)" @click="showModal">Submit your App</a></li>
             </ul>
           </div>
           <div class="col-md-3">
@@ -45,17 +44,27 @@
         
       </div>
     </footer>
+     <submit-app v-show="isModalVisible" @close="closeModal" />
   </div>
 </template>
 
 <script>
+import submitApp from './submitApp.vue';
 export default {
+  components: { submitApp },
   data(){
     return {
-      categories: []
+      categories: [],
+      isModalVisible: false,
     }
   },
   methods:{
+     showModal() {
+        this.isModalVisible = true;
+      },
+      closeModal() {
+        this.isModalVisible = false;
+      },
     async getCategories() {
         try {
           const res = await this.$store.dispatch("getCategories");

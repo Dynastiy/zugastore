@@ -38,11 +38,11 @@ export default new Vuex.Store({
     
 },
 // Single Category products
-async getByCategory({ commit }, id) {
-  const res = await axios.get(baseUrl+`/api/find-category/${id}`)
-  commit('GET_SINGLE_CATEGORY', res)
-  return res.data
-},
+// async getByCategory({ commit }, id) {
+//   const res = await axios.get(baseUrl+`/api/find-category/${id}`)
+//   commit('GET_SINGLE_CATEGORY', res)
+//   return res.data
+// },
 
 //  products
 // All Products
