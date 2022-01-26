@@ -14,16 +14,31 @@
             <span class="sr-only">Loading...</span>
           </div> -->
         <div class="new__apps">
-            <div class="app__list" v-for="product in productCategory" :key="product.id">
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" alt="">
-                <div class="p-2">
-                   <router-link :to=" '/product/'+product.id "> <h6 class="text-white mt-2 font-weight-bold">  {{ product.name }} </h6></router-link>
-                    <hr class="hr">
-                <p class="small text-warning text-capitalize"> {{ product.developer }} </p>
-                <p class="small text-info"> {{ product.last_update }} </p>
-                </div>
-                <router-link :to=" '/product/'+product.id "><button class="btn rounded-0 bg-info w-100 font-weight-bold text-white text-uppercase"> <span v-if="product.license === 'paid' "> ${{ product.price }}</span> <span v-else>FREE</span></button></router-link>
+            <div
+        class=" text-center"
+        v-for="product in productCategory"
+        :key="product.id"
+      >
+        <router-link :to="'/product/' + product.id">
+          <div class="app__list p-3">
+            <img
+              :src="
+                'https://zuga.divcommanifold.com/app/photos/' + product.app_icon
+              "
+              alt=""
+            />
+            <div class="">
+              <h6 class="text-dark mt-2 font-weight-bold">
+                {{ product.name }}
+              </h6>
+
+              <p class="small text-dark font-weight-bold text-capitalize">
+                {{ product.file_size }}
+              </p>
             </div>
+          </div>
+        </router-link>
+      </div>
         </div>
     </div>
 </template>
@@ -74,9 +89,10 @@ export default {
 
 <style scoped>
 .new__apps img {
-    object-fit: cover;
-    height: 150px;
-    width: 100%;
+    /* object-fit: cover; */
+    width: 50px;
+    height: 50px;
+    /* width: 100x%; */
     /* width: ; */
     /* border-radius: 20px; */
 }
@@ -84,7 +100,8 @@ export default {
     background: #d7d7d7;
 }
 .app__list {
-    background: #000;
+    /* background: #000; */
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
 }
 .new__apps{
      display: grid;

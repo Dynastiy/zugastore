@@ -33,7 +33,7 @@
                 <h5 class=" font-weight-bold mb-4">
                 User Reviews
                 </h5>
-                <div v-if="reviews.length === 0" class="alert alert-info" role="alert">
+                <div v-if="reviews.length === 0" class="alert alert-danger" role="alert">
                   No reviews for this product yet
                 </div>
                 <div>

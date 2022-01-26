@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-info shadow-sm">
+    <div class="bg-info web__categories shadow-sm">
       <header
         class="main-nav container d-flex justify-content-between align-items-center py-3"
       >
@@ -60,8 +60,13 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .router-link-exact-active{
   color: #000 !important;
+}
+@media (max-width:990px){
+.web__categories {
+  display: none;
+}
 }
 </style>

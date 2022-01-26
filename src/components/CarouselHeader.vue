@@ -67,4 +67,12 @@
     height: 12px;
     /* border-radius: 50%; */
   }
+  @media (max-width: 990px){
+    .carousel img {
+    object-fit: cover;
+    opacity: 0.3;
+    height: 200px;
+    border-radius: 5px;
+  }
+  }
 </style>

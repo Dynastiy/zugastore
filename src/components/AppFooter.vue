@@ -80,8 +80,8 @@ export default {
   }
 }
 </script>
+<style scoped>
 
-<style lang="css">
   @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
   
   .footer-14398 {
@@ -110,7 +110,7 @@ export default {
     /* margin-bottom: 10px; */
   }
   .links a {
-    color: #fff;
+    color: #fff !important;
     font-size: 0.8rem;
     line-height: 0.8rem;
   }
