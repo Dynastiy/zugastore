@@ -160,7 +160,7 @@
                         {{ review.reviewer_name.charAt(0) }}
                       </div>
                       <div>
-                        <h4 class="font-weight-bold text-capitalize mb-1"> {{review.reviewer_name }} </h4>
+                        <h4 class="font-weight-bold text-capitalize"> {{review.reviewer_name }} </h4>
                         <div class="d-flex align-items-center">
                             <star-rating v-model="review.rating"
                             v-bind:max-rating="5"
@@ -170,7 +170,7 @@
                           <!-- <small class="text-muted">Stars</small> -->
                           <small class="text-muted ml-4"> {{ review.created_at | formatDate }} </small>
                         </div>
-                        <div class="main_content mt-3">
+                        <div class="main_content mt-1">
                           <p> {{ review.comment }} </p>
                         </div>
                       </div>
