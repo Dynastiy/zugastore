@@ -10,7 +10,7 @@
             <div class="app__list" v-for="product in products" :key="product.id">
                 <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" alt="">
                 <div class="p-2">
-                   <router-link :to=" '/products/'+product.id "> <h6 class="text-white mt-2 font-weight-bold">  {{ product.name }} </h6></router-link>
+                   <router-link :to=" '/product/'+product.id "> <h6 class="text-white mt-2 font-weight-bold">  {{ product.name }} </h6></router-link>
                     <hr class="hr">
                 <p class="small text-warning text-capitalize"> {{ product.developer }} </p>
                 <p class="small text-info"> {{ product.last_update | formatDate }} </p>

@@ -100,7 +100,7 @@ export default {
     display: block;
   }
   .footer-14398 .content h3 {
-    color: #17a3b8;
+    color: #d2b681;
     font-size: 1.3rem;
     margin-bottom: 20px;
     font-family: "Fjalla One", sans-serif;
@@ -115,7 +115,7 @@ export default {
     line-height: 0.8rem;
   }
   .links a:hover {
-    color: #17a3b8;
+    color: #d2b681;
     text-decoration: none;
     transition: 1s;
   }
@@ -133,7 +133,7 @@ export default {
     padding-left: 0;
   }
   .copyright {
-    background: #17a3b8;
+    background: #d2b681;
     color: #000;
     font-weight: bold;
     padding: 0.8rem;

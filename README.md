@@ -1,4 +1,4 @@
-# zugastore
+# Samzuga App Store
 
 ## Project setup
 ```

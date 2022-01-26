@@ -26,3 +26,16 @@ export default {
     }
 }
 </script>
+
+<style>
+.bg-info{
+  background: #d2b681 !important;
+}
+.btn .bg-info:hover {
+  background: #d2b681 !important;
+}
+
+.text-info {
+color: #d2b681 !important;
+}
+</style>

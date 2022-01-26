@@ -6,7 +6,7 @@
         class="main-nav container d-flex justify-content-between align-items-center py-3"
       >
         <div>
-          <router-link class="text-white font-weight-bold" to="/">App Store Logo</router-link>
+          <router-link class="text-white font-weight-bold" to="/">Samzuga App Store</router-link>
         </div>
         <div>
           <div class="input-group">
