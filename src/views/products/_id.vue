@@ -160,7 +160,7 @@
                         {{ review.reviewer_name.charAt(0) }}
                       </div>
                       <div>
-                        <h6 class="font-weight-bold text-capitalize mb-1"> {{review.reviewer_name }} </h6>
+                        <h4 class="font-weight-bold text-capitalize mb-1"> {{review.reviewer_name }} </h4>
                         <div class="d-flex align-items-center">
                             <star-rating v-model="review.rating"
                             v-bind:max-rating="5"
