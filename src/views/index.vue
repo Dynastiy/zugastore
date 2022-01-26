@@ -13,7 +13,7 @@
         :key="product.id"
       >
         <router-link :to="'/product/' + product.id">
-          <div class="app__list p-3">
+          <div class="app__list p-2 ">
             <img
               :src="
                 'https://zuga.divcommanifold.com/app/photos/' + product.app_icon
@@ -21,13 +21,13 @@
               alt=""
             />
             <div class="">
-              <h6 class="text-dark mt-2 font-weight-bold">
+              <h4 class="text-dark mt-2 font-weight-bold">
                 {{ product.name }}
-              </h6>
+              </h4>
 
-              <p class="small text-dark font-weight-bold text-capitalize">
+              <h4 class="small py-2 bg-dark text-info font-weight-bold text-capitalize">
                 {{ product.file_size }}
-              </p>
+              </h4>
             </div>
           </div>
         </router-link>
@@ -78,6 +78,10 @@ export default {
 .app__list {
   /* background: #000; */
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+h4.small {
+  border-radius: 15px;
 }
 .new__apps {
   display: grid;

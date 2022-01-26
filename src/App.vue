@@ -28,6 +28,9 @@ export default {
 </script>
 
 <style>
+#app {
+  background: #d2b68104;
+}
 .bg-info{
   background: #d2b681 !important;
 }
