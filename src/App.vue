@@ -2,7 +2,7 @@
   <div id="app">
     <AppHeader/>
     <app-categories/>
-    <div class="container py-5">
+    <div class="container py-4">
       <router-view />
     </div>
     <AppFooter/>

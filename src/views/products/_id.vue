@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div class="bg-white">
+    <div class="bg-white web__single__app">
       <div class="container py-5">
         <div class="view">
-          
           <div class="left__side">
             
             <div class="top__data d-flex" style="gap: 10px">
@@ -84,6 +83,124 @@
         </div>
       </div>
     </div>
+
+
+    <!-- Mobile View of Single App -->
+    <div class="bg-white mobile__single__app">
+      <div class="container">
+        <div class="view">
+          <div class="left__side">
+            
+            <div class="top__data d-flex align-items-center" style="gap: 10px">
+              <div class="feat__image mr-2">
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" class="immg" alt="">
+              </div>
+              <div class="content">
+                <h3 class=" font-weight-bold"> {{ product.name }} </h3>
+                <p class="text-capitalize"> {{ product.developer }} </p>
+              </div>
+            </div>
+            <div class="mt-4 d-flex align-items-center justify-content-between">
+              <div class="text-center">
+                <h4 class="font-weight-bold">4.36</h4>
+                <p> {{ reviews.length }} Reviews </p>
+              </div>
+              <div class="vl">
+              </div>
+              <div class="text-center">
+               <i class="fa fa-download fa--download" aria-hidden="true"></i>
+                <p> {{ product.file_size }} </p>
+              </div>
+              <div class="vl">
+              </div>
+              <div class="text-center">
+                <h4> {{ product.visits }} </h4>
+                <p> Downloads </p>
+              </div>
+            </div>
+            <button class="btn mt-4 w-100 bg-info rounded-lg font-weight-bold text-white py-1" @click="downloadApp">DOWNLOAD</button>
+            <div class="images d-flex mt-4" style="gap: 10px; width:100%; overflow-x: scroll">
+              <div>
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_one" class="" alt="">
+              </div>
+              <div>
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_two" class="" alt="">
+              </div>
+              <div>
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_three" class="" alt="">
+              </div>
+              <div>
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_four" class="" alt="">
+              </div>
+            </div>
+            <div class="mid__content">
+              <div class="mt-4">
+                <h3 class=" font-weight-bold mb-3">
+                Description
+              </h3>
+              <p> {{ product.description }} </p>
+              </div>
+              <div class="mt-4">
+                <h3 class=" mb-3 font-weight-bold">
+                Tags
+              </h3>
+              <button class="btn btn__tag btn-outline-info py-1 px-3" v-if="product.tag"> {{ product.tag.name }} </button>
+              </div>
+               <div class="mt-4">
+                <h3 class=" font-weight-bold mb-3">
+                User Reviews
+                </h3>
+                <div v-if="reviews.length === 0" class="text-danger" role="alert">
+                  No reviews for this product yet
+                </div>
+                <div>
+                  <div class="review_content mb-5" v-for="review in reviews" :key="review.id">
+                    <div class="d-flex">
+                      <div v-if="review" class="avatar mr-3 text-uppercase" :class="[review.reviewer_name.charAt(0)]"  >
+                        {{ review.reviewer_name.charAt(0) }}
+                      </div>
+                      <div>
+                        <h6 class="font-weight-bold text-capitalize mb-1"> {{review.reviewer_name }} </h6>
+                        <div class="d-flex align-items-center">
+                            <star-rating v-model="review.rating"
+                            v-bind:max-rating="5"
+                            inactive-color="#000"
+                            active-color="#ffd700"
+                            v-bind:star-size="13" :show-rating = false></star-rating>
+                          <!-- <small class="text-muted">Stars</small> -->
+                          <small class="text-muted ml-4"> {{ review.created_at | formatDate }} </small>
+                        </div>
+                        <div class="main_content mt-3">
+                          <p> {{ review.comment }} </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="right__side">
+            
+            <div>
+              <p v-if="product.category" class="text-capitalize"><span class="font-weight-bold">Category:</span> {{ product.category.category_name }}  </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">Platform:</span> {{ product.platform }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">Developer:</span> {{ product.developer }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">File Size:</span> {{ product.file_size }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">Visits:</span> {{ product.visits }} </p>
+              <hr class="hr bg-info">
+              <p class="text-capitalize"><span class="font-weight-bold">License:</span>  <span v-if="product.license === 'paid' "> ${{ product.price }}</span> <span v-else>FREE</span>  </p>
+              <hr class="hr bg-info">
+              <p><span class="font-weight-bold">Last Updated:</span> {{ product.last_update | formatDate }} </p>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -149,6 +266,9 @@ data(){
   margin: 0;
   padding: 0;
 }
+.mobile__single__app {
+  display: none;
+}
 .avatar {
   display: flex;
   align-items: center;
@@ -190,13 +310,34 @@ h1, h2, h3, h4, h5, h6, p {
   gap: 20px;
 }
 .btn__tag {
-  background: #17a3b82c;
+  background: #d2b68146;
+  border: 1px solid #d2b681;
   color: #000;
+  padding: 0.1rem 4rem !important;
+  border-radius: 20px;
 }
 .feat__image img {
   /* object-fit: contain; */
-    height: 100px;
+    height: 200px;
+    width: 90px;
+}
+.images div img {
+  height: 150px;
     width: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.vl {
+  width: 0.2px;
+  height: 3rem;
+  background-color: #999;
+}
+.fa--download {
+  font-size: 1.5rem;
+}
+.immg {
+  height: 60px !important;
+  width: 60px !important;
 }
 a:hover {
   text-decoration: none;
@@ -206,8 +347,14 @@ a:hover {
   .view {
     display: unset;
   }
-  .view div {
-    margin-bottom: 20px;
+  .web__single__app{
+    display: none;
+  }
+  .mobile__single__app{
+    display: unset;
+  }
+  h3, h4 {
+    font-weight: bold;
   }
 }
 </style>
