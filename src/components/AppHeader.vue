@@ -6,7 +6,7 @@
         class="main-nav container d-flex justify-content-between align-items-center py-3"
       >
         <div>
-          <router-link class="text-white font-weight-bold" to="/">Samzuga App Store</router-link>
+          <router-link class="text-white font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="150" alt="" srcset=""> </router-link>
         </div>
         <div>
           <div class="input-group">
@@ -33,7 +33,7 @@
           <i class="fa fa-bars" aria-hidden="true" id="tog"></i>
         </div>
         <div>
-          <router-link class="text-dark font-weight-bold" to="/">Samzuga App Store</router-link>
+          <router-link class="text-dark font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="150" alt="" srcset=""> </router-link>
         </div> 
         <i class="fa fa-search" aria-hidden="true"></i> 
       </nav>
