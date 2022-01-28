@@ -46,9 +46,9 @@
           </div>
           <ul class="navbar-nav mr-auto  mt-lg-0" style="gap:20px">
             <li v-for="category in categories" :key="category.id" class="nav-item d-flex align-items-center ">
-                <span> <img :src=" 'https://zuga.divcommanifold.com/'+category.icon_image " alt="" width="15" class="mr-3"> </span>
+                <!-- <span> <img :src=" 'https://zuga.divcommanifold.com/'+category.icon_image " alt="" width="15" class="mr-3"> </span> -->
                   <router-link class="text-dark font-weight-bold nav-link text-uppercase" :to=" '/category/'+category.id">
-                  {{ category.category_name }} </router-link> 
+                 - {{ category.category_name }} </router-link> 
             </li>
         </ul>
         </div>
