@@ -7,7 +7,7 @@
             
             <div class="top__data d-flex" style="gap: 10px">
               <div class="feat__image">
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" alt="">
+                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" width="100" height="100" alt="">
               </div>
               <div class="content">
                 
@@ -318,7 +318,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .feat__image img {
   /* object-fit: contain; */
-    height: 200px;
+    height: 90px;
     width: 90px;
 }
 .images div img {

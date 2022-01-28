@@ -86,7 +86,7 @@ export default {
   
   .footer-14398 {
     /* padding: 3rem 0; */
-    background: #212529;
+    background: #000;
     color: #fff;
   }
   .footer-14398 ul li {
@@ -100,7 +100,7 @@ export default {
     display: block;
   }
   .footer-14398 .content h3 {
-    color: #d2b681;
+    color: #a3783d;
     font-size: 1.3rem;
     margin-bottom: 20px;
     font-family: "Fjalla One", sans-serif;
@@ -133,8 +133,8 @@ export default {
     padding-left: 0;
   }
   .copyright {
-    background: #d2b681;
-    color: #000;
+    background: #a3783d;
+    color: #fff;
     font-weight: bold;
     padding: 0.8rem;
     text-align: center;

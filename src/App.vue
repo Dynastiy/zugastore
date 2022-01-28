@@ -32,12 +32,18 @@ export default {
   background: #d2b68104;
 }
 .bg-info{
+  background: #a67b3e !important;
+}
+/* .bg-info{
   background: #d2b681 !important;
+} */
+.bg-dark {
+  background: #000 !important;
 }
 .btn .bg-info:hover {
   background: #d2b681 !important;
 }
 .text-info {
-color: #d2b681 !important;
+color: #a3783d !important;
 }
 </style>
