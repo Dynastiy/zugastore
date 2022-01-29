@@ -102,7 +102,7 @@
             </div>
             <div class="mt-4 d-flex align-items-center justify-content-between">
               <div class="text-center">
-                <h4 class="font-weight-bold"v-if="rating"> {{ rating.avg_rating.toFixed(1) }} </h4>
+                <h4 class="font-weight-bold" v-if="rating"> {{ rating.avg_rating.toFixed(1) }} </h4>
                 <p> {{ reviews.length }} Reviews </p>
               </div>
               <div class="vl">
@@ -121,16 +121,116 @@
             <button class="btn mt-4 w-100 bg-info rounded-lg font-weight-bold text-white py-1" @click="downloadApp">DOWNLOAD</button>
             <div class="images d-flex mt-4" style="gap: 10px; width:100%; overflow-x: scroll">
               <div>
-                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_one" class="" alt="">
+               
+                <!-- Button trigger modal -->
+                <button type="button"  data-toggle="modal" data-target="#exampleModal">
+                   <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_one" class="" alt="">
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" style="min-height: 100vh" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body d-flex justify-content-center">
+                        <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_one" class="modal-img" alt="">
+                      </div>
+                      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_two" class="" alt="">
+               <div>
+               
+                <!-- Button trigger modal -->
+                <button type="button"  data-toggle="modal" data-target="#exampleModal2">
+                   <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_two" class="" alt="">
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" style="min-height: 100vh" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body d-flex justify-content-center">
+                        <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_two" class="modal-img" alt="">
+                      </div>
+                      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_three" class="" alt="">
+               <div>
+               
+                <!-- Button trigger modal -->
+                <button type="button"  data-toggle="modal" data-target="#exampleModal3">
+                   <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_three" class="" alt="">
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" style="min-height: 100vh" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body d-flex justify-content-center">
+                        <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_three" class="modal-img" alt="">
+                      </div>
+                      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_four" class="" alt="">
+               <div>
+               
+                <!-- Button trigger modal -->
+                <button type="button"  data-toggle="modal" data-target="#exampleModal4">
+                   <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_four" class="" alt="">
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" style="min-height: 100vh" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body d-flex justify-content-center">
+                        <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_four" class="modal-img" alt="">
+                      </div>
+                      <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="mid__content">
@@ -357,6 +457,31 @@ a:hover {
   }
   h3, h4 {
     font-weight: bold;
+  }
+  .close{
+    font-size: 5rem;
+    color: #fff;
+    opacity: unset;
+  }
+  .modal-content {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    min-height: 100vh;
+    border-radius: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .modal-header {
+    border-bottom: none;
+    padding: 0;
+  }
+  .modal-img {
+    height: 43rem !important;
+    width: 23rem !important;
+  }
+  .images button {
+    border: none;
   }
 }
 </style>
