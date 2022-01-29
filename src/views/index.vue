@@ -16,16 +16,18 @@
           <div class="app__list p-2 ">
             <img
               :src="
-                'https://zuga.divcommanifold.com/app/photos/' + product.app_icon
+                'https://api.africanapp.store/softwares/photos/' + product.app_icon
               "
               alt=""
+              width="50"
+              height="50"
             />
             <div class="">
               <h4 class="text-dark mt-2 font-weight-bold">
                 {{ product.name }}
               </h4>
 
-              <h4 class="small py-2 bg-dark text-info font-weight-bold text-capitalize">
+              <h4 class="small py-2 bg-dark w-100 text-info font-weight-bold text-capitalize">
                 {{ product.file_size }}
               </h4>
             </div>
@@ -78,7 +80,12 @@ export default {
 .app__list {
   /* background: #000; */
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+  height: 100%;
   border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center
 }
 h4.small {
   border-radius: 15px;

@@ -14,7 +14,7 @@
               <div class="collapse navbar-collapse" id="collapsibleNavId">
                   <ul class="navbar-nav mr-auto  mt-lg-0" style="gap:20px">
                       <li v-for="category in categories" :key="category.id" class="nav-item d-flex align-items-center ">
-                          <span> <img :src=" 'https://zuga.divcommanifold.com/'+category.icon_image " alt="" width="15"> </span>
+                          <span> <img :src=" 'https://api.africanapp.store/'+category.icon_image " alt="" width="15"> </span>
                            <router-link class="text-white font-weight-bold nav-link text-uppercase" :to=" '/category/'+category.id">
                             {{ category.category_name }} </router-link> 
                       </li>

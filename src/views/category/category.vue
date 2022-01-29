@@ -23,7 +23,7 @@
           <div class="app__list p-2">
             <img
               :src="
-                'https://zuga.divcommanifold.com/app/photos/' + product.app_icon
+                'https://api.africanapp.store/softwares/photos/' + product.app_icon
               "
               alt=""
             />
@@ -71,7 +71,7 @@ export default {
   this.loading = true;
     var self=this;
       axios
-       .get("https://zuga.divcommanifold.com/api/find-category/"+this.id)
+       .get("https://api.africanapp.store/api/find-category/"+this.id)
        .then(function (response) {
            self.productCategory = response.data.category.products; // Data existed
            self.category = response.data.category

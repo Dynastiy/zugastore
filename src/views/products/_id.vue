@@ -7,12 +7,12 @@
             
             <div class="top__data d-flex" style="gap: 10px">
               <div class="feat__image">
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" width="100" height="100" alt="">
+                <img :src="'https://api.africanapp.store/softwares/photos/'+product.app_icon" width="100" height="100" alt="">
               </div>
               <div class="content">
                 
                 <h6 class=" font-weight-bold mb-3"> {{ product.name }} </h6>
-                <p class=" mb-2">Rating: <span class="font-weight-bold">4.36</span> (Votes: 11)</p>
+                <p class=" mb-2">Rating: <span class="font-weight-bold" v-if="rating"> {{ rating.avg_rating.toFixed(1) }} </span> (Reviews: {{ rating.sum_rating }})</p>
               </div>
             </div>
             <div class="mid__content">
@@ -93,7 +93,7 @@
             
             <div class="top__data d-flex align-items-center" style="gap: 10px">
               <div class="feat__image mr-2">
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.app_icon" class="immg" alt="">
+                <img :src="'https://api.africanapp.store/softwares/photos/'+product.app_icon" class="immg" alt="">
               </div>
               <div class="content">
                 <h3 class=" font-weight-bold"> {{ product.name }} </h3>
@@ -121,16 +121,16 @@
             <button class="btn mt-4 w-100 bg-info rounded-lg font-weight-bold text-white py-1" @click="downloadApp">DOWNLOAD</button>
             <div class="images d-flex mt-4" style="gap: 10px; width:100%; overflow-x: scroll">
               <div>
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_one" class="" alt="">
+                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_one" class="" alt="">
               </div>
               <div>
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_two" class="" alt="">
+                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_two" class="" alt="">
               </div>
               <div>
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_three" class="" alt="">
+                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_three" class="" alt="">
               </div>
               <div>
-                <img :src="'https://zuga.divcommanifold.com/app/photos/'+product.photo_four" class="" alt="">
+                <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_four" class="" alt="">
               </div>
             </div>
             <div class="mid__content">
@@ -216,7 +216,8 @@ data(){
   return {
     product: {},
     id: this.$route.params.id,
-    reviews: []
+    reviews: [],
+    rating: '',
   }
 },
   
@@ -225,6 +226,7 @@ data(){
         try {
           const res = await this.$store.dispatch("getSingleProduct", this.id);
           console.log(res.product);
+          this.rating = res
           this.product = res.product
           console.log(res.product.reviews);
           this.reviews = res.product.reviews;
@@ -236,7 +238,7 @@ data(){
         // alert(this.id)
           // const res = await axios.get("http://zuga.divcommanifold.com/api/download-app/"+this.id)
           axios({
-                    url: "https://zuga.divcommanifold.com/api/download-app/"+this.id,
+                    url: "https://api.africanapp.store/api/download-app/"+this.id,
                     method: 'GET',
                     responseType: 'blob',
                 }).then((response) => {

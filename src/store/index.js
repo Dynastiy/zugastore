@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-const baseUrl = "https://zuga.divcommanifold.com"
+const baseUrl = "https://api.africanapp.store"
 
 Vue.use(Vuex)
 
