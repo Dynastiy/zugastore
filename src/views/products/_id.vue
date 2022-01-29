@@ -102,7 +102,7 @@
             </div>
             <div class="mt-4 d-flex align-items-center justify-content-between">
               <div class="text-center">
-                <h4 class="font-weight-bold">4.36</h4>
+                <h4 class="font-weight-bold"v-if="rating"> {{ rating.avg_rating.toFixed(1) }} </h4>
                 <p> {{ reviews.length }} Reviews </p>
               </div>
               <div class="vl">
