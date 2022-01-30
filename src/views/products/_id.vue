@@ -12,7 +12,7 @@
               <div class="content">
                 
                 <h6 class=" font-weight-bold mb-3"> {{ product.name }} </h6>
-                <p class=" mb-2">Rating: <span class="font-weight-bold" v-if="rating"> {{ rating.avg_rating.toFixed(1) }} </span> (Reviews: {{ rating.sum_rating }})</p>
+                <p class=" mb-2">Rating: <span class="font-weight-bold" v-if="rating"> <span v-if="rating.avg_rating == null " class="small"> No rating yet </span> <span v-else>  {{ rating.avg_rating.toFixed(1) }} </span>   </span> (Reviews: {{ rating.sum_rating }})</p>
               </div>
             </div>
             <div class="mid__content">
@@ -102,7 +102,7 @@
             </div>
             <div class="mt-4 d-flex align-items-center justify-content-between">
               <div class="text-center">
-                <h4 class="font-weight-bold" v-if="rating"> {{ rating.avg_rating.toFixed(1) }} </h4>
+                <h4 class="font-weight-bold"> <span v-if="rating.avg_rating == null " class="small"> No rating yet </span> <span v-else>  {{ rating.avg_rating.toFixed(1) }} </span>  </h4>
                 <p> {{ reviews.length }} Reviews </p>
               </div>
               <div class="vl">
@@ -325,6 +325,7 @@ data(){
     async getSingleProduct() {
         try {
           const res = await this.$store.dispatch("getSingleProduct", this.id);
+          console.log(res);
           console.log(res.product);
           this.rating = res
           this.product = res.product
