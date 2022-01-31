@@ -73,7 +73,7 @@
               <hr class="hr bg-info">
               <p class="text-capitalize"><span class="font-weight-bold">File Size:</span> {{ product.file_size }} </p>
               <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">Visits:</span> {{ product.visits }} </p>
+              <p class="text-capitalize"><span class="font-weight-bold">Downloads:</span> {{ product.downloads }} </p>
               <hr class="hr bg-info">
               <p class="text-capitalize"><span class="font-weight-bold">License:</span>  <span v-if="product.license === 'paid' "> ${{ product.price }}</span> <span v-else>FREE</span>  </p>
               <hr class="hr bg-info">

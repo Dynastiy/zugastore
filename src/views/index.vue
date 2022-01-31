@@ -2,7 +2,7 @@
   <div>
     <CarouselHeader /> 
     <div class="">
-        <h6 class="font-weight-bold">NEW PRODUCTS</h6>
+        <h6 class="font-weight-bold">NEW APPS</h6>
       </div>
       <hr class="hr my-4" />
     <div class="new__apps">
@@ -38,7 +38,7 @@
 
     <!-- Popular Apps --> 
     <div class="mt-4">
-        <h6 class="font-weight-bold">POPULAR PRODUCTS</h6>
+        <h6 class="font-weight-bold">POPULAR APPS</h6>
       </div>
       <hr class="hr my-4" />
     <div class="new__apps">
@@ -74,7 +74,7 @@
 
     <!-- All Products --> 
     <div class=" mt-4">
-        <h6 class="font-weight-bold">ALL PRODUCTS</h6>
+        <h6 class="font-weight-bold">ALL APPS</h6>
       </div>
       <hr class="hr my-4" />
     <div class="new__apps">
