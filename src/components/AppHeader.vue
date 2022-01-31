@@ -9,20 +9,7 @@
           <router-link class="text-white font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="150" alt="" srcset=""> </router-link>
         </div>
         <div>
-          <div class="input-group">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search"
-              aria-label="Search"
-              aria-describedby="basic-addon2"
-            />
-            <div class="input-group-append">
-              <span class="input-group-text" id="basic-addon2"
-                > <i class="fa fa-search" aria-hidden="true"></i> </span
-              >
-            </div>
-          </div>
+          <search-bar></search-bar>
         </div>
       </header>
     </div>
@@ -35,8 +22,11 @@
         <div>
           <router-link class="text-dark font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="150" alt="" srcset=""> </router-link>
         </div> 
-        <i class="fa fa-search" aria-hidden="true"></i> 
+        <i class="fa fa-search" aria-hidden="true" @click="toggleSearch"></i> 
       </nav>
+      <div class="container mt-2" v-show="searchbar">
+        <search-bar></search-bar>
+      </div>
 
 
       <div class="mobile_nav" id="side-bar">
@@ -57,13 +47,26 @@
   </div>
 </template>
 <script>
+import searchBar from '@/components/search.vue'
 export default {
+  components:{
+    searchBar,
+  },
   data(){
     return {
-      categories: []
+      categories: [],
+      searchbar: false,
     }
   },
   methods:{
+    toggleSearch(){
+      if(this.searchbar === true){
+        this.searchbar = false
+      }
+      else{
+        this.searchbar = true
+      }
+    },
     async getCategories() {
         try {
           const res = await this.$store.dispatch("getCategories");

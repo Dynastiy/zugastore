@@ -114,7 +114,7 @@
               <div class="vl">
               </div>
               <div class="text-center">
-                <h4> {{ product.visits }} </h4>
+                <h4> {{ product.downloads }} </h4>
                 <p> Downloads </p>
               </div>
             </div>
@@ -222,7 +222,7 @@
                         </button>
                       </div>
                       <div class="modal-body d-flex justify-content-center">
-                        <img :src="'https://api.africanapp.store/softwares/photos/'+product.photo_four" class="modal-img" alt="">
+                        <img :src="'https://api.africanapp.store/softwares/photos/'+ product.photo_four" class="modal-img" alt="">
                       </div>
                       <!-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -349,10 +349,13 @@ data(){
                      fURL.href = fileURL;
                      fURL.setAttribute('download', `${this.product.name}.apk`);
                      document.body.appendChild(fURL);
-    
                      fURL.click();
-                });
-          
+                })
+                .finally(()=>{
+                  this.getSingleProduct();
+                }) 
+                  
+                
     // self.downloadProduct = res.data
       }
   },

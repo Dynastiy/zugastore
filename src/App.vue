@@ -3,7 +3,7 @@
     <AppHeader/>
     <app-categories/>
     <div class="container py-4">
-      <router-view />
+      <router-view :key="$route.fullPath"/>
     </div>
     <AppFooter/>
   </div>
