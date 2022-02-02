@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="search__box">
         <div class="input-group">
             <input
             v-model="search"
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <ul class="bg-white ul__search list-unstyled">
+    <ul class="bg-white ul__search list-unstyled shadow-sm" v-if="search_result">
       <li class="" v-for="product in filteredProducts " :key="product.id" >
         <router-link  :to="'/product/' + product.id">{{ product.name }}</router-link>
       </li>
@@ -47,18 +47,20 @@ export default {
             this.filteredProducts = res.products.filter(product =>
               product.name.toLowerCase().includes(this.search.toLowerCase())
             );
+            this.search_result = true
           }
           else {
-            // this.filteredProducts = res.products;
-            alert("no result found")
+            this.search_result = false
+            this.filteredProducts = res.products;
+            // alert("no result found")
           }
         });
     },
     async getProducts() {
       try {
         const res = await this.$store.dispatch("getProducts");
-        console.log(res.products);
-        this.products = res.products;
+        console.log(res.all_products);
+        this.products = res.all_products;
       } catch (error) {
         console.log(error);
       }
@@ -78,10 +80,28 @@ export default {
 </script>
 
 <style scoped>
+.ul__search{
+  position: absolute;
+  /* top: 0; */
+  width: 30%;
+  z-index: 999;
+  transition: 2s;
+}
+.search__box{
+  position: relative;
+}
 .ul__search li {
-    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 .ul__search li a {
     color: #000;
+    font-size: 0.8rem;
+    display: block;
+    padding: 0.5rem;
+}
+.ul__search  li a:hover{
+  text-decoration: none;
+  background: #fae4ba25;
+  
 }
 </style>

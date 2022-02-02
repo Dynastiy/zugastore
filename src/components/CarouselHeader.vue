@@ -53,11 +53,11 @@
 .carousel img {
     object-fit: cover;
     opacity: 0.3;
-    height: 400px;
-    border-radius: 5px;
+    height: 250px;
+    border-radius: 3px;
   }
   .carousel-item {
-    border-radius: 5px;
+    border-radius: 3px;
     max-height: 100vh;
     background: black;
     overflow: hidden;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer-14398">
+    <!-- <footer class="footer-14398">
       <div class="content pt-5 container">
         <div class="row mb-5">
           <div class="col-md-3">
@@ -43,6 +43,15 @@
           <p class="font-weight-bold">©Copyright 2021 Blockmay.com</p>
         
       </div>
+    </footer> -->
+    <footer>
+      <div class="p-3 d-flex justify-content-center" style="gap: 30px">
+          <p class="small text-dark" > <router-link to="/">Privacy Policy</router-link> </p>
+          <p class="small text-dark" > <router-link to="/">Terms of Service</router-link> </p>
+          <p class="small text-dark" > <router-link to="/">About</router-link> </p>
+          <p class="small text-dark">©Copyright 2021 Blockmay.com</p>
+        
+      </div>
     </footer>
      <submit-app v-show="isModalVisible" @close="closeModal" />
   </div>
@@ -82,64 +91,4 @@ export default {
 </script>
 <style scoped>
 
-  @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
-  
-  .footer-14398 {
-    /* padding: 3rem 0; */
-    background: #000;
-    color: #fff;
-  }
-  .footer-14398 ul li {
-    padding: 0.2rem 0;
-  }
-  .footer-site-logo {
-    color: #fff;
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    display: block;
-  }
-  .footer-14398 .content h3 {
-    color: #a3783d;
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-    font-family: "Fjalla One", sans-serif;
-    text-transform: uppercase;
-  }
-  .links li {
-    /* margin-bottom: 10px; */
-  }
-  .links a {
-    color: #fff !important;
-    font-size: 0.8rem;
-    line-height: 0.8rem;
-  }
-  .links a:hover {
-    color: #d2b681;
-    text-decoration: none;
-    transition: 1s;
-  }
-
-  .link-menu li {
-    display: inline-block;
-  }
-  .link-menu a {
-    color: #fff;
-    display: inline-block;
-    padding: 5px;
-  }
-
-  .link-menu a .nav-left li :first-child a {
-    padding-left: 0;
-  }
-  .copyright {
-    background: #a3783d;
-    color: #fff;
-    font-weight: bold;
-    padding: 0.8rem;
-    text-align: center;
-  }
-  .copyright p {
-    margin: 0;
-  }
 </style>

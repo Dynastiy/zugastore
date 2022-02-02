@@ -58,6 +58,8 @@ async getSingleProduct({ commit }, id) {
     commit('GET_SINGLE_PRODUCT', res)
     return res.data
 },
+
+
 /**** Top tier Admin ****/
 async getUsers({ commit }) {
     const res = await this.$axios.$get('/loanees')

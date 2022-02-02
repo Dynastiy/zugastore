@@ -1,26 +1,25 @@
 <template>
     <div>
         <div class="d-flex align-items-center ">
-            <router-link to="/" class="font-weight-bold text-dark mr-1">ALL PRODUCTS </router-link>
+            <router-link to="/" class=" text-dark mr-1">ALL PRODUCTS </router-link>
             <span class="text-uppercase text-muted small"> >>{{ category.category_name }} </span> 
             <!-- <p class="text-info">More <i class="fa fa-angle-right" aria-hidden="true"></i> </p> -->
         </div>
-        <hr class="hr my-4">
-        <!-- <CarouselHeader/> -->
-          <div v-if="productCategory.length === 0 "  class="alert alert-danger" role="alert">
+        <div class="hr"></div>
+          <div class="alert alert-danger" role="alert" id="noApps">
             No apps here
           </div>
-          <!-- <div v-else-if="loading" class="spinner-border" role="status">
+          <div v-if="loading" class="spinner-border" role="status">
             <span class="sr-only">Loading...</span>
-          </div> -->
+          </div>
         <div class="new__apps">
             <div
-        class=" text-center"
+        class=""
         v-for="product in productCategory"
         :key="product.id"
       >
         <router-link :to="'/product/' + product.id">
-          <div class="app__list p-2">
+          <div class="app__list shadow-sm">
             <img
               :src="
                 'https://api.africanapp.store/softwares/photos/' + product.app_icon
@@ -28,11 +27,10 @@
               alt=""
             />
             <div class="">
-              <h6 class="text-dark mt-2 font-weight-bold">
+              <h6 class="text-dark small mt-3" style="min-width: 100%; overflow: hidden">
                 {{ product.name }}
               </h6>
-
-               <h4 class="small py-2 bg-dark text-info font-weight-bold text-capitalize">
+              <h4 class="small text-dark  text-capitalize">
                 {{ product.file_size }}
               </h4>
             </div>
@@ -60,67 +58,85 @@ export default {
     }
   },
   methods:{
-    // async 
+    async getApps(){
+      try {
+        this.loading = true;
+      // var self=this;
+      let res = await axios.get("https://api.africanapp.store/api/find-category/"+this.id);
+     this.productCategory = res.data.category.products; // Data existed
+          this.category = res.data.category
+           console.log(res.data.category.products);
+           if(res.data.category.products.length === 0 ){
+             let noApp = document.getElementById("noApps");
+             noApp.style.display = 'block'
+           }
+           this.loading = false
+      } catch (error) {
+        console.log(error);
+      }
+      finally{
+        this.loading = false;
+      }
+    }
   },
   
  async created() {
-  //  var self = this;
-  //   const res = await axios.get("http://zuga.divcommanifold.com/api/find-category/"+this.id)
-  //   console.log(res.data.category.products);
-  //   self.productCategory = res.data.category.products
-  this.loading = true;
-    var self=this;
-      axios
-       .get("https://api.africanapp.store/api/find-category/"+this.id)
-       .then(function (response) {
-           self.productCategory = response.data.category.products; // Data existed
-           self.category = response.data.category
-           console.log(response.data.category.products);
-           
-       })
-       .catch(function (err) {
-           console.log(err);
-       }) 
-      
+      this.getApps()
   }
 }
 </script>
 
 
 <style scoped>
+#noApps{
+  display: none;
+}
 .new__apps img {
-    /* object-fit: cover; */
-    width: 50px;
-    height: 50px;
-    /* width: 100x%; */
-    /* width: ; */
-    /* border-radius: 20px; */
+  /* object-fit: cover; */
+  height: 100px;
+  width: 100px;
+  /* width: ; */
+  /* border-radius: 20px; */
+}
+.hr {
+  background: #d2b681;
+  height: 1px;
+  margin: 1.3rem 0;
+}
+.app__list {
+ background: #fff;
+ padding:1rem ;
+ display: table;
+ width: 100%;
+ height: 100%;
 }
 h4.small {
   border-radius: 15px;
+  margin: 0;
 }
-.hr {
-    background: #d7d7d7;
+.new__apps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
 }
-.app__list {
-    /* background: #000; */
-    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.15);
-    border-radius: 15px;
-}
-.new__apps{
-     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap:20px ;
+.new__apps p {
+  margin: 0;
 }
 
 @media (max-width: 990px){
     .new__apps {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        transition:  all 2s;
-    }
-    .new__apps div {
-        /* margin-bottom: 20px; */
-    }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) ;
+    transition: all 2s;
+  }
+  .app__list {
+    background: transparent;
+    box-shadow: unset !important;
+  }
+  .new__apps img{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
 }
 </style>

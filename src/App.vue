@@ -2,7 +2,7 @@
   <div id="app">
     <AppHeader/>
     <app-categories/>
-    <div class="container py-4">
+    <div class="main__page">
       <router-view :key="$route.fullPath"/>
     </div>
     <AppFooter/>
@@ -28,15 +28,24 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+}
 #app {
-  background: #d2b68104;
+  background: #fae4ba25;
+  min-height: 100vh;
 }
 .bg-info{
   background: #a67b3e !important;
 }
-/* .bg-info{
-  background: #d2b681 !important;
-} */
+.main__page {
+  margin-left: 200px;
+  transition: 1s;
+  padding: 2rem;
+}
 .bg-dark {
   background: #000 !important;
 }
@@ -45,5 +54,11 @@ export default {
 }
 .text-info {
 color: #a3783d !important;
+}
+@media (max-width: 990px) {
+  .main__page{
+    margin-left: unset;
+  }
+  
 }
 </style>
