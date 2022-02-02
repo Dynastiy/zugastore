@@ -17,13 +17,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://wallpapertag.com/wallpaper/full/5/c/1/237072-gorgerous-4k-gaming-wallpapers-1920x1080.jpg" class="d-block  w-100"   alt="Game" />
+          <img src="@/assets/img/banner_1.svg" class="d-block  w-100"   alt="Game" />
         </div>
         <div class="carousel-item">
-          <img src="https://wallpapercave.com/wp/NcKygwi.jpg" class="d-block w-100 " alt="Game" />
+          <img src="@/assets/img/banner_2.svg" class="d-block w-100 " alt="Game" />
         </div>
         <div class="carousel-item">
-          <img src="https://getwallpapers.com/wallpaper/full/1/c/b/13271.jpg" class="d-block w-100 "  alt="Game" />
+          <img src="@/assets/img/banner_3.svg" class="d-block w-100 "  alt="Game" />
         </div>
       </div>
       <button
@@ -51,9 +51,9 @@
 
 <style scoped>
 .carousel img {
-    object-fit: cover;
-    opacity: 0.3;
-    height: 250px;
+    object-fit:cover;
+    opacity: 0.6;
+    height: 350px;
     border-radius: 3px;
   }
   .carousel-item {
