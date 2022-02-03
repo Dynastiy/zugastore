@@ -43,7 +43,7 @@
       <div class="lower__part">
         <h6 class="small text-dark" style="padding-left: 1rem">SOCIAL</h6>
         <ul class="list-unstyled mt-3" style="padding-left: 1rem">
-         <li><a href="http://fb.me/africanapp" target="_blank"> <i class="fa fa-facebook mr-2" aria-hidden="true"></i> <span class="text-dark small">Facebook</span> </a></li>
+         <li><a href="http://fb.me/africanappstore" target="_blank"> <i class="fa fa-facebook mr-2" aria-hidden="true"></i> <span class="text-dark small">Facebook</span> </a></li>
          <li><a href="http://twitter.com/africanapp" target="_blank"> <i class="fa fa-twitter mr-1" aria-hidden="true"></i> <span class="text-dark small">Twitter</span> </a></li>
          <li><a href="http://instagram.com/africanapp" target="_blank"><i class="fa fa-instagram text-danger mr-1" aria-hidden="true"></i> <span class="text-dark small">Instagram</span> </a></li>
          <li><a href="http://linkedin.com/africanapp" target="_blank"> <i class="fa fa-linkedin mr-1" aria-hidden="true"></i>  <span class="text-dark small">LinkedIn</span> </a></li>
