@@ -17,13 +17,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="@/assets/img/banner_1.svg" class="d-block  w-100"   alt="Game" />
+          <img src="@/assets/img/banner1.jpg" class="d-block  w-100"   alt="Game" />
         </div>
         <div class="carousel-item">
-          <img src="@/assets/img/banner_2.svg" class="d-block w-100 " alt="Game" />
+          <img src="@/assets/img/banner2.jpg" class="d-block w-100 " alt="Game" />
         </div>
         <div class="carousel-item">
-          <img src="@/assets/img/banner_3.svg" class="d-block w-100 "  alt="Game" />
+          <img src="@/assets/img/banner3.jpg" class="d-block w-100 "  alt="Game" />
         </div>
       </div>
       <button
@@ -53,7 +53,7 @@
 .carousel img {
     object-fit:cover;
     opacity: 0.6;
-    height: 350px;
+    height: 250px;
     border-radius: 3px;
   }
   .carousel-item {
@@ -65,13 +65,12 @@
   .carousel-indicators li {
     width: 12px;
     height: 12px;
-    /* border-radius: 50%; */
   }
   @media (max-width: 990px){
     .carousel img {
     object-fit: cover;
     opacity: 0.3;
-    height: 200px;
+    height: 100px;
     border-radius: 5px;
   }
   }
