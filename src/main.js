@@ -4,6 +4,10 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 
+axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
+
+Vue.config.ignoredElements = [/^ion-/]
+
 import moment from 'moment';
 
 Vue.filter('formatDate', function(value) {

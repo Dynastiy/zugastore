@@ -14,6 +14,10 @@
       <header class="main-nav bg-white">
         <div>
           <ul class="navbar-nav mr-auto mt-lg-0">
+            <li class="nav-item">
+              <router-link to="/my-apps">My Apps</router-link>
+            </li>
+            <hr>
             <li
               v-for="category in categories"
               :key="category.id"
@@ -73,7 +77,7 @@ export default {
     async getCategories() {
       try {
         const res = await this.$store.dispatch("getCategories");
-        console.log(res.categories);
+        // console.log(res.categories);
         this.categories = res.categories;
       } catch (error) {
         console.log(error);

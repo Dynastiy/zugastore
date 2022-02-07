@@ -6,15 +6,23 @@
         <search-bar></search-bar>
 
         <!-- user Profile -->
-        <div class="btn-group">
+        <div class="d-flex align-items-center justify-content-between" style="gap:20px" >
+          <div class="btn-group" v-show="isLoggedIn">
           <button type="button" class="drop__btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <img src="https://365webresources.com/wp-content/uploads/2016/09/FREE-PROFILE-AVATARS.png" class="rounded-circle" width="30" height="30" alt="">
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Submit App</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Logout</a>
+            <!-- <a class="dropdown-item" href="#">Submit App</a> -->
+            <!-- <a class="dropdown-item" href="#">Login</a> -->
+            <!-- <a class="dropdown-item" href="#">Register</a> -->
+            <a class="dropdown-item" @click="logout">Logout</a>
           </div>
+        </div>
+        <div v-show="!isLoggedIn">
+            <router-link to="/signin"> 
+              <button class="py-1 px-4 border-0 bg-info rounded-sm text-white">Sign in</button>
+               </router-link>
+        </div>
         </div>
       </header>
     </div>
@@ -43,6 +51,9 @@
              <li class="mb-3">
           <router-link class="text-white font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="120" alt="" srcset=""> </router-link>
        
+            </li>
+            <li class="bg-info px-2 py-2">
+              <router-link class="text-white" to="/my-apps">My Apps and Games</router-link>
             </li>
             <li v-for="category in categories" :key="category.id" class="nav-item d-flex align-items-center ">
                   <router-link class="text-dark font-weight-bold nav-link text-uppercase" :to=" '/category/'+category.id">
@@ -80,6 +91,12 @@ export default {
     }
   },
   methods:{
+    logout(){
+       this.$store.dispatch('logout')
+             .then(() => {
+                this.$router.push('/')
+                });
+    },
     toggleSearch(){
       if(this.searchbar === true){
         this.searchbar = false
@@ -91,7 +108,7 @@ export default {
     async getCategories() {
         try {
           const res = await this.$store.dispatch("getCategories");
-          console.log(res.categories);
+          // console.log(res.categories);
           this.categories = res.categories
         } catch (error) {
           console.log(error);
@@ -140,7 +157,12 @@ export default {
   },
   async created(){
     this.getCategories();
-  }
+  },
+  computed: {
+        isLoggedIn: function() {
+          return this.$store.getters.isLoggedIn;
+        }
+      },
 }
 </script>
 
@@ -152,8 +174,13 @@ export default {
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 85%;
   z-index: 999;
+}
+.sticky + .main-nav {
+  display: flex;
+  justify-content: space-between;
+  /* width: 100%; */
 }
 /* .sticky + .content {
   padding-top: 60px;
@@ -203,6 +230,17 @@ font-size: 25px;
 }
 .dropdown-menu {
   border-radius: 0 !important;
+}
+.dropdown-item {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.5rem;
+}
+.dropdown-menu {
+    border-radius: 0;
+}
+.dropdown-menu a:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
 }
 @media(max-width: 990px){
 .web__header{

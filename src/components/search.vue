@@ -59,7 +59,7 @@ export default {
     async getProducts() {
       try {
         const res = await this.$store.dispatch("getProducts");
-        console.log(res.all_products);
+        // console.log(res.all_products);
         this.products = res.all_products;
       } catch (error) {
         console.log(error);

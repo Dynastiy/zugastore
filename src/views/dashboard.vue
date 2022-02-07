@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <div>
-      <router-view/>
+    <AppHeader/>
+    <app-categories/>
+    <div class="main__page">
+      <router-view :key="$route.fullPath"/>
     </div>
+    <AppFooter/>
   </div>
 </template>
 
@@ -12,23 +15,20 @@
 
 
 <script>
+import AppFooter from '@/components/AppFooter.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import AppCategories from '@/components/AppCategories.vue'
 export default {
     components:{
-        
+        AppFooter,
+        AppHeader,
+        AppCategories
     }
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&display=swap');
-@import url('./assets/util.css');
-:root {
-  --primary-color: #a67b3e;
-  --secondary-color: #a3783d;
-  --tertiary-color: #d2b681;
-  --accent-color: #fae4ba25;
-  --light-color: #d2b68175;
-}
 *{
   padding: 0;
   margin: 0;
