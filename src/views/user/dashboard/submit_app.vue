@@ -112,7 +112,7 @@ export default {
             category_id: '',
             app_icon: null,
             app_file: null,
-            phote_one: null,
+            photo_one: null,
             photo_two: null,
             photo_three: null,
             photo_four: null
@@ -187,7 +187,7 @@ export default {
             formData.append("category_id",  this.category_id);
             formData.append("app_icon", this.app_icon);
             formData.append("app_file", this.app_file);
-            formData.append("phote_one", this.photo_one);
+            formData.append("photo_one", this.photo_one);
             formData.append("photo_two", this.photo_two);
             formData.append("photo_three", this.photo_three);
             formData.append("photo_four", this.photo_four);
@@ -208,7 +208,7 @@ export default {
             this.category_id = '';
             this.app_icon = '';
             this.app_file = '';
-            this.phote_one ='';
+            this.photo_one ='';
             this.photo_two = '';
             this.photo_three = '';
             this.photo_four = '';
@@ -229,7 +229,7 @@ export default {
             this.category_id = '';
             this.app_icon = '';
             this.app_file = '';
-            this.phote_one ='';
+            this.photo_one ='';
             this.photo_two = '';
             this.photo_three = '';
             this.photo_four = '';
