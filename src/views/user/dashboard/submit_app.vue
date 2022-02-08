@@ -235,15 +235,12 @@ export default {
             this.photo_four = '';
         }
       }
-        
     },
     async created(){
         this.getCategories();
         this.getTags();
         this.user = this.$store.getters.getUser
         this.developer = this.user.name;
-
-        
     }
 }
 </script>

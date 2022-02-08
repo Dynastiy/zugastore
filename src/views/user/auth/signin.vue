@@ -8,7 +8,7 @@
       <div class="container-login100">
         <div class="wrap-login100 p-l-60 p-r-60 p-t-30 p-b-30 shadow-lg">
           <form
-            class="login100-form validate-form flex-sb flex-w"
+            class="login100-form validate-form"
             @submit.prevent="login"
           >
             <img src="@/assets/img/logo_spread.svg" width="150" alt="" />
@@ -16,9 +16,10 @@
               Developer Login
             </span>
 
-            <span class="txt1 p-b-11"> Email </span>
+           <div class="m-b-20">
+              <span class="txt1 p-b-11"> Email </span>
             <div
-              class="wrap-input100 validate-input m-b-20"
+              class="wrap-input100 validate-input"
               data-validate="Username is required"
             >
               <input
@@ -29,10 +30,15 @@
               />
               <span class="focus-input100"></span>
             </div>
+            <div v-show="error_msgs.email">
+                <span class="small text-danger" v-for="error in error_msgs.email" :key="error.id"> *{{ error }} </span>
+              </div>
+           </div>
 
-            <span class="txt1 p-b-11"> Password </span>
+           <div class="m-b-20">
+              <span class="txt1 p-b-11"> Password </span>
             <div
-              class="wrap-input100 validate-input m-b-20"
+              class="wrap-input100 validate-input"
               data-validate="Password is required"
             >
               <input
@@ -42,9 +48,13 @@
                 v-model="password"
               />
               <span class="focus-input100"></span>
+              <div v-show="error_msgs.password">
+                <span class="small text-danger" v-for="error in error_msgs.password" :key="error.id"> *{{ error }} </span>
+              </div>
             </div>
+           </div>
             <div class="container-login100-form-btn">
-              <button class="login100-form-btn" @click="login">LOGIN</button>
+              <button class="login100-form-btn">LOGIN</button>
             </div>
           </form>
           <div class="text-center pt-2">
@@ -65,7 +75,8 @@ export default {
       email: "",
       password: "",
       msg: "",
-      loading: false
+      loading: false,
+      error_msgs: '',
     };
   },
   methods: {
@@ -90,7 +101,15 @@ export default {
         this.loading = false
         this.$router.push("/my-apps");
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        console.log(error.response.data.error);
+        this.error_mgs = error.response.data.error
+        let msg = error.response.data.message
+         Swal.fire(
+          'Chill!',
+          msg,
+          'warning'
+        )
         this.email = '';
         this.password = ''
         this.loading = false

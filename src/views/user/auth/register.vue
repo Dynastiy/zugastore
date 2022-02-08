@@ -8,17 +8,18 @@
       <div class="container-login100">
         <div class="wrap-login100 p-l-60 p-r-60 p-t-30 p-b-30 shadow-lg">
           <form
-            class="login100-form validate-form flex-sb flex-w"
+            class="login100-form validate-form"
             @submit.prevent="register"
           >
             <img src="@/assets/img/logo_spread.svg" width="150" alt="" />
-            <span class="login100-form-title text-center p-b-30">
+            <div class="m-b-20">
+              <span class="login100-form-title text-center p-b-30">
               Create New Developer Account
             </span>
 
             <span class="txt1 p-b-11"> Developer Name </span>
             <div
-              class="wrap-input100 validate-input m-b-20"
+              class="wrap-input100 validate-input"
               data-validate="Username is required"
             >
               <input
@@ -29,29 +30,35 @@
               />
               <span class="focus-input100"></span>
             </div>
-
-             <span class="txt1 p-b-11"> Email </span>
-            <div
-              class="wrap-input100 validate-input m-b-20"
-              data-validate="Username is required"
-            >
-              <input
-                class="input100"
-                type="email"
-                name="email"
-                v-model="email"
-              />
-              <span class="focus-input100"></span>
+            <div v-show="error_msg.name">
+              <span class="small text-danger" v-for="error in error_msg.name" :key="error.id"> *{{ error }} </span>
+            </div>
             </div>
 
-            <span class="txt1 p-b-11"> Password </span>
+            <div class="m-b-20">
+              <span class="txt1 p-b-11"> Email </span>
+              <div
+                class="wrap-input100 validate-input"
+                data-validate="Username is required"
+              >
+                <input
+                  class="input100"
+                  type="email"
+                  name="email"
+                  v-model="email"
+                />
+                <span class="focus-input100"></span>
+              </div>
+              <div v-show="error_msg.email">
+                <span class="small text-danger" v-for="error in error_msg.email" :key="error.id"> *{{ error }} </span>
+              </div>
+            </div>
+
+           <div class="m-b-20">
+              <span class="txt1 p-b-11"> Password </span>
             <div
-              class="wrap-input100 validate-input m-b-20"
-              data-validate="Password is required"
+              class="wrap-input100 validate-input"
             >
-              <!-- <span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span> -->
               <input
                 class="input100"
                 type="password"
@@ -60,15 +67,25 @@
               />
               <span class="focus-input100"></span>
             </div>
-            <span class="txt1 p-b-11"> Upload Photo </span>
-            <div
-              class=" validate-input m-b-20"
-            > 
-              <input type="file" class="input100" id="file-ip-1" accept="image/*" @change="showPreview($event);">
-              <span class="focus-input100"></span>
+              <div v-show="error_msg.password">
+                <span class="small text-danger" v-for="error in error_msg.password" :key="error.id"> *{{ error }} </span>
+              </div>
+           </div>
+
+            <div class="m-b-20">
+              <span class="txt1 p-b-11"> Upload Photo </span>
+              <div
+                class=" validate-input"
+              > 
+                <input type="file" class="input100" id="file-ip-1" accept="image/*" @change="showPreview($event);">
+                <span class="focus-input100"></span>
+              </div>
+              <div v-show="error_msg.photo">
+                <span class="small text-danger" v-for="error in error_msg.photo" :key="error.id"> *{{ error }} </span>
+              </div>
             </div>
             <div class="container-login100-form-btn">
-              <button class="login100-form-btn" @click="register">REGISTER</button>
+              <button class="login100-form-btn">REGISTER</button>
             </div>
           </form>
         </div>
@@ -87,7 +104,8 @@ export default {
       email: "",
       password: "",
       photo:null,
-      loading: false
+      loading: false,
+      error_msg: {},
     };
   },
   methods: {
@@ -123,16 +141,20 @@ export default {
         this.loading = false
         this.$router.push("/signin");
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data.message);
+        console.log(error.response.data.errors);
+        this.error_msg = error.response.data.errors;
+        console.log(this.error_msg);
+        let msg = error.response.data.message
          Swal.fire(
           'Chill!',
-          'Something went wrong!',
+          msg,
           'warning'
         )
-        this.email = '';
-        this.password = ''
-        this.photo = '',
-        this.name = '',
+        // this.email = '';
+        // this.password = ''
+        // this.photo = '',
+        // this.name = '',
         this.loading = false
       }
     },
