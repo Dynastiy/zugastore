@@ -60,7 +60,7 @@
                   <router-link class="text-dark font-weight-bold nav-link text-uppercase" :to=" '/category/'+category.id">
                  - {{ category.category_name }} </router-link> 
             </li>
-            <li class="mb-2 bg-info px-2 py-2">
+            <li class="mb-2 bg-info px-2 py-2 text-white">
               <i class="fa fa-power-off mr-2" aria-hidden="true"></i>
                 <a class="" @click="logout">Logout</a>
             </li>
