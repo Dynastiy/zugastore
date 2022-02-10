@@ -1,5 +1,8 @@
 <template>
   <div class="">
+    <div class="d-lg-none mb-3 text-right">
+        <button class="submit-app-button" @click="submitApp">Submit App</button>
+    </div>
     <CarouselHeader /> 
     <div>
       <div class="">
@@ -108,6 +111,7 @@
 
 <script>
 import CarouselHeader from "@/components/CarouselHeader.vue";
+import Swal from 'sweetalert2'
 // import StarRating from "vue-star-rating";
 export default {
   components: {
@@ -125,17 +129,37 @@ export default {
     async getProducts() {
       try {
         const res = await this.$store.dispatch("getProducts");
+        console.log(res);
         this.products = res.products;
         this.popular = res.popular_products;
-        this.all_products = res.all_products.data
+        this.all_products = res.all_products;
       } catch (error) {
         console.log(error);
       }
     },
+    submitApp(){
+      if(!this.$store.getters.isLoggedIn){
+         Swal.fire(
+          'You are not signed in!',
+          'Sign in or register to submit app',
+          'warning'
+        )
+        this.$router.push('/signin');
+      }
+      else{
+        Swal.fire(
+          'Welcome!',
+          'Submit App Here',
+          'success'
+        )
+        this.$router.push('/submit_app')
+      }
+    }
   },
   async created() {
     this.getProducts();
   },
+  
 };
 </script>
 
@@ -169,6 +193,12 @@ h4.small {
 .new__apps p {
   margin: 0;
 }
+.submit-app-button {
+  padding: 0.2rem 1rem;
+  border: 1px solid #d2b681;
+  background: #fff;
+  border-radius: 3px;
+}
 
 @media (max-width: 990px) {
   .new__apps {
@@ -183,6 +213,22 @@ h4.small {
   .new__apps img{
     width: 80px;
     height: 80px;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 424px) {
+  .new__apps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) ;
+    transition: all 2s;
+  }
+  .app__list {
+    background: transparent;
+    box-shadow: unset !important;
+  }
+  .new__apps img{
+    width: 60px;
+    height: 60px;
     border-radius: 10px;
   }
 }

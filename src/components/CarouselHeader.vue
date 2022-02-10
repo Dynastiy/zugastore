@@ -70,7 +70,7 @@
     .carousel img {
     object-fit: cover;
     opacity: 0.3;
-    height: 100px;
+    height: 120px;
     border-radius: 5px;
   }
   }

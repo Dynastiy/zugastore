@@ -55,9 +55,14 @@
             <li class="bg-info px-2 py-2">
               <router-link class="text-white" to="/my-apps">My Apps and Games</router-link>
             </li>
+            
             <li v-for="category in categories" :key="category.id" class="nav-item d-flex align-items-center ">
                   <router-link class="text-dark font-weight-bold nav-link text-uppercase" :to=" '/category/'+category.id">
                  - {{ category.category_name }} </router-link> 
+            </li>
+            <li class="mb-2 bg-info px-2 py-2">
+              <i class="fa fa-power-off mr-2" aria-hidden="true"></i>
+                <a class="" @click="logout">Logout</a>
             </li>
         </ul>
         <div class="hr2"></div>
@@ -208,7 +213,7 @@ font-size: 25px;
   background: rgba(0, 0, 0, 0.4);
   z-index: 999;
   position: fixed;
-   left: -500px;
+   left: -1000px;
   top: 0;
   width: 100%;
   /* font-size: 1.3rem; */
@@ -248,6 +253,9 @@ font-size: 25px;
 }
 .mobile__header {
   display: unset;
+}
+.nav__menu .fa {
+  font-size: 0.9rem;
 }
 }
 </style>

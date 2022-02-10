@@ -17,6 +17,11 @@ export default {
   },
   async getProducts() {
     const response = await axios
+      .get(url + 'all-products');
+    return response.data;
+  },
+  async getDevProducts() {
+    const response = await axios
       .get(url + 'dev-products/');
     return response.data;
   },
