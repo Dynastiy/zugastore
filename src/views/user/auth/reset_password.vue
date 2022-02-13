@@ -87,10 +87,9 @@ export default {
      if(this.new_password === this.confirm_password){
         try {
         const credentials = {
-          // new_password: this.new_password,
           password: this.confirm_password,
-          email:'',
-          token: '',
+          email: this.$route.query.email,
+          token: this.$route.query.token,
         };
         const response = await helpers.resetPassword(credentials);
         console.log(response);
@@ -112,7 +111,7 @@ export default {
           msg,
           'warning'
         )
-        this.new_password
+        this.new_password = ''
         this.confirm_password = ''
         this.loading = false
       }
