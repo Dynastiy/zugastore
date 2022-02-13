@@ -89,7 +89,7 @@ export default {
             const formData = new FormData();
             formData.append("password", this.new_password);
             formData.append("password_confirmation", this.confirm_password)
-            formData.append("email:", this.$route.query.email,)
+            formData.append("email", this.$route.query.email,)
             formData.append("token", this.$route.query.token)                                                     
           
         const response = await helpers.resetPassword(formData);
