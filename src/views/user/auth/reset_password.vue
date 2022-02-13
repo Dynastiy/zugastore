@@ -86,12 +86,13 @@ export default {
       this.loading = true;
      if(this.new_password === this.confirm_password){
         try {
-        const credentials = {
-          password: this.confirm_password,
-          email: this.$route.query.email,
-          token: this.$route.query.token,
-        };
-        const response = await helpers.resetPassword(credentials);
+            const formData = new FormData();
+            formData.append("password", this.new_password);
+            formData.append("password_confirmation", this.confirm_password)
+            formData.append("email:", this.$route.query.email,)
+            formData.append("token", this.$route.query.token)                                                     
+          
+        const response = await helpers.resetPassword(formData);
         console.log(response);
         
         Swal.fire(
