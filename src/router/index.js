@@ -88,6 +88,24 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/user/auth/signin.vue"),
   },
+  {
+    path: "/forgot-password",
+    name: "forgot-password",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/user/auth/forgot_password.vue"),
+  },
+  {
+    path: "/reset-password",
+    name: "reset-password",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/user/auth/reset_password.vue"),
+  },
 
 ];
 

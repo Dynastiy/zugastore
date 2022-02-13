@@ -9,11 +9,11 @@
         <div class="wrap-login100 p-l-60 p-r-60 p-t-30 p-b-30 shadow-lg">
           <form
             class="login100-form validate-form"
-            @submit.prevent="login"
+            @submit.prevent="forgotPassword"
           >
             <img src="@/assets/img/logo_spread.svg" width="150" alt="" />
             <span class="login100-form-title text-center p-b-30">
-              Developer Login
+              Forgot Password
             </span>
 
            <div class="m-b-20">
@@ -35,34 +35,13 @@
               </div>
            </div>
 
-           <div class="m-b-20">
-              <span class="txt1 p-b-11"> Password </span>
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Password is required"
-            >
-              <input
-                class="input100"
-                type="password"
-                name="pass"
-                v-model="password"
-              />
-              <span class="focus-input100"></span>
-              <div v-show="error_msgs.password">
-                <span class="small text-danger" v-for="error in error_msgs.password" :key="error.id"> *{{ error }} </span>
-              </div>
-            </div>
-           </div>
-           <div class="text-right pb-1">
-            <span class=""> <router-link to="/forgot-password" class="text-info font-weight-bold">Forgot Password?</router-link> </span>
-          </div> 
             <div class="container-login100-form-btn">
-              <button class="login100-form-btn">LOGIN</button>
+              <button class="login100-form-btn">SUBMIT</button>
             </div>
           </form>
-          <div class="text-center pt-2">
+          <!-- <div class="text-center pt-2">
             <span class=""> Please <router-link to="/signup" class="text-info font-weight-bold">Register</router-link> if you do not have an account </span>
-          </div>        
+          </div>         -->
         </div>
       </div>
     </div>
@@ -83,38 +62,39 @@ export default {
     };
   },
   methods: {
-    async login() {
+    async forgotPassword() {
       this.loading = true;
       try {
         const credentials = {
           email: this.email,
-          password: this.password,
+          // password: this.password,
         };
-        const response = await helpers.login(credentials);
+        const response = await helpers.forgotPassword(credentials);
         console.log(response);
-        const token = response.token;
-        const user = response.user;
-        console.log(response.user);
-        this.$store.dispatch("login", { token, user });
+        let msg = response.message
+        // const token = response.token;
+        // const user = response.user;
+        // console.log(response.user);
+        // this.$store.dispatch("login", { token, user });
         Swal.fire(
-          'Welcome!',
-          'Login Successful!',
+          'Successful!',
+          msg,
           'success'
         )
         this.loading = false
-        this.$router.push("/my-apps");
+        // this.$router.push("/my-apps");
       } catch (error) {
         console.log(error.response.data.message);
         console.log(error.response.data.error);
         this.error_mgs = error.response.data.error
         let msg = error.response.data.message
          Swal.fire(
-          'Chill!',
+          'Error!',
           msg,
           'warning'
         )
         this.email = '';
-        this.password = ''
+        // this.password = ''
         this.loading = false
       }
     },

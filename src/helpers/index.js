@@ -10,6 +10,16 @@ export default {
       .post(url + 'auth/signin/', credentials);
     return response.data;
   },
+  async forgotPassword(credentials) {
+    const response = await axios
+      .post(url + 'auth/forgot-password/', credentials);
+    return response.data;
+  },
+  async resetPassword(credentials) {
+    const response = await axios
+      .post(url + 'auth/reset-password/', credentials);
+    return response.data;
+  },
   async register(credentials) {
     const response = await axios
       .post(url + 'auth/signup/', credentials);
