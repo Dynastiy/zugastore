@@ -78,7 +78,7 @@ export default {
       try {
         const res = await this.$store.dispatch("getCategories");
         // console.log(res.categories);
-        this.categories = res.categories;
+        this.categories = res.categories.data;
       } catch (error) {
         console.log(error);
       }

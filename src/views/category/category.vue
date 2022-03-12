@@ -63,10 +63,11 @@ export default {
         this.loading = true;
       // var self=this;
       let res = await axios.get("https://api.africanapp.store/api/find-category/"+this.id);
-     this.productCategory = res.data.category.products; // Data existed
-          this.category = res.data.category
-           console.log(res.data.category.products);
-           if(res.data.category.products.length === 0 ){
+     this.productCategory = res.data.category.data; // Data existed
+          this.category = res.data.category.data
+          // console.log(res);
+           console.log(res.data.category.data);
+           if(res.data.category.data.length === 0 ){
              let noApp = document.getElementById("noApps");
              noApp.style.display = 'block'
            }

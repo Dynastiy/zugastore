@@ -1,12 +1,13 @@
 <template>
   <div class="">
-    <div class="d-lg-none mb-3 text-right">
+    <div class="d-lg-none mb-4 text-right">
         <button class="submit-app-button" @click="submitApp">Submit App</button>
     </div>
     <CarouselHeader /> 
     <div>
-      <div class="">
+      <div class="mt-4 d-flex align-items-center justify-content-between">
         <h6 class="">NEW APPS</h6>
+        <!-- <button class="see--more" @click="seeMoreNew"> See More </button> -->
       </div>
       <div class="hr"></div>
     <div class="new__apps">
@@ -38,8 +39,9 @@
     </div>
 
     <!-- Popular Apps --> 
-      <div class="mt-4">
+      <div class="mt-4 d-flex align-items-center justify-content-between">
         <h6 class="">POPULAR APPS</h6>
+       <!-- <button class="see--more" @click="seeMorePopular"> See More </button> -->
       </div>
       <div class="hr"></div>
 
@@ -73,8 +75,9 @@
     </div>
 
     <!-- All Products --> 
-    <div class=" mt-4">
+    <div class="mt-4 d-flex align-items-center justify-content-between">
         <h6 class="">ALL APPS</h6>
+        <!-- <button class="see--more" @click="seeMoreAll"> See More </button> -->
       </div>
       <div class="hr"></div>
     <div class="new__apps">
@@ -112,27 +115,41 @@
 <script>
 import CarouselHeader from "@/components/CarouselHeader.vue";
 import Swal from 'sweetalert2'
-// import StarRating from "vue-star-rating";
 export default {
   components: {
     CarouselHeader, 
-    // StarRating
   },
   data() {
     return {
       products: [],
       popular: [],
       all_products:[],
+      filter: '',
     };
   },
   methods: {
+    seeMorePopular(){
+      // alert("Popular");
+      this.filter = 'popular-apps'
+      this.$router.push({path:'/apps', query:{ filter: this.filter}})
+    },
+    seeMoreAll(){
+      // alert("All")
+      this.filter = 'all-apps'
+      this.$router.push({path:'/apps', query:{ filter: this.filter}})
+    },
+    seeMoreNew(){
+      // alert("New")
+      this.filter = 'new-apps'
+      this.$router.push({path:'/apps', query:{ filter: this.filter}})
+    },
     async getProducts() {
       try {
         const res = await this.$store.dispatch("getProducts");
         console.log(res);
-        this.products = res.products;
-        this.popular = res.popular_products;
-        this.all_products = res.all_products;
+        this.products = res.products.data;
+        this.popular = res.popular_products.data;
+        this.all_products = res.all_products.data;
       } catch (error) {
         console.log(error);
       }
@@ -168,6 +185,10 @@ export default {
 .new__apps img {
   height: 100px;
   width: 100px;
+  background: #fff;
+}
+.new__apps img:hover {
+  background: rgba(0, 0, 0, 0.01);
 }
 .hr {
   background: #d2b681;
@@ -199,6 +220,14 @@ h4.small {
   background: #fff;
   border-radius: 3px;
 }
+.see--more {
+  background: #a67b3e;
+  font-size: 0.8rem;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border: none;
+  border-radius: 3px;
+}
 
 @media (max-width: 990px) {
   .new__apps {
@@ -213,7 +242,9 @@ h4.small {
   .new__apps img{
     width: 80px;
     height: 80px;
-    border-radius: 10px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.01);
   }
 }
 @media (max-width: 424px) {
@@ -227,9 +258,11 @@ h4.small {
     box-shadow: unset !important;
   }
   .new__apps img{
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.01);
   }
 }
 </style>

@@ -313,7 +313,7 @@
 
     <!-- Mobile View of Single App -->
     <div class="bg-white mobile__single__app">
-      <div class="container">
+      <div class="">
         <div class="view">
           <div class="left__side">
             <div class="top__data d-flex align-items-center" style="gap: 10px">
@@ -328,19 +328,19 @@
                 />
               </div>
               <div class="content">
-                <h3 class="font-weight-bold">{{ product.name }}</h3>
-                <p class="text-capitalize">{{ product.developer }}</p>
+                <h5 class="font-weight-bold">{{ product.name }}</h5>
+                <p class="text-capitalize small">{{ product.developer }}</p>
               </div>
             </div>
             <div class="mt-4 d-flex align-items-center justify-content-between">
               <div class="text-center">
-                <h4 class="font-weight-bold">
+                <h5 class="font-weight-bold">
                   <span v-if="rating.avg_rating == null" class="small">
                     No rating yet
                   </span>
                   <span v-else> {{ rating.avg_rating.toFixed(1) }} </span>
-                </h4>
-                <p>{{ rating.sum_rating }} Reviews</p>
+                </h5>
+                <p class="small">{{ rating.sum_rating }} Reviews</p>
               </div>
               <div class="vl"></div>
               <div class="text-center">
@@ -349,13 +349,13 @@
               </div>
               <div class="vl"></div>
               <div class="text-center">
-                <h4>{{ product.downloads }}</h4>
-                <p>Downloads</p>
+                <h5>{{ product.downloads }}</h5>
+                <p class="small font-weight-bold">Downloads</p>
               </div>
             </div>
             <button
               class="btn mt-4 w-100 bg-info rounded-lg font-weight-bold text-white py-1"
-              @click="downloadApp"
+              @click="downloadApp" style="font-size: 14px"
             >
               DOWNLOAD
             </button>
@@ -590,11 +590,11 @@
             </div>
             <div class="mid__content">
               <div class="mt-4">
-                <h3 class=" mb-3">Description</h3>
+                <h6 class=" mb-3 font-weight-bold">Description</h6>
                 <p>{{ product.description }}</p>
               </div>
               <div class="mt-4">
-                <h3 class="mb-3 font-weight-bold">Tags</h3>
+                <h6 class="mb-3 font-weight-bold">Tags</h6>
                 <button
                   class="btn btn__tag btn-outline-info py-1 px-3"
                   v-if="product.tag"
@@ -603,10 +603,10 @@
                 </button>
               </div>
               <div class="mt-4">
-                <h3 class="font-weight-bold mb-3">User Reviews</h3>
+                <h6 class="font-weight-bold mb-3">User Reviews</h6>
                 <div
                   v-if="reviews.length === 0"
-                  class="text-danger"
+                  class="text-danger small"
                   role="alert"
                 >
                   No reviews for this product yet
@@ -653,24 +653,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="right__side">
-            
-            <div>
-              <p v-if="product.category" class="text-capitalize"><span class="font-weight-bold">Category:</span> {{ product.category.category_name }}  </p>
-              <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">Platform:</span> {{ product.platform }} </p>
-              <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">Developer:</span> {{ product.developer }} </p>
-              <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">File Size:</span> {{ product.file_size }} </p>
-              <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">Visits:</span> {{ product.visits }} </p>
-              <hr class="hr bg-info">
-              <p class="text-capitalize"><span class="font-weight-bold">License:</span>  <span v-if="product.license === 'paid' "> ${{ product.price }}</span> <span v-else>FREE</span>  </p>
-              <hr class="hr bg-info">
-              <p><span class="font-weight-bold">Last Updated:</span> {{ product.last_update | formatDate }} </p>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>

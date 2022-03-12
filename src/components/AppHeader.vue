@@ -33,7 +33,7 @@
           <i class="fa fa-bars" aria-hidden="true" id="tog"></i>
         </div>
         <div>
-          <router-link class="text-dark font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="130" alt="" srcset=""> </router-link>
+          <router-link class="text-dark font-weight-bold" to="/"> <img src="@/assets/img/logo_spread.svg" width="100" alt="" srcset=""> </router-link>
         </div> 
         <i class="fa fa-search" aria-hidden="true" @click="toggleSearch"></i> 
       </nav>
@@ -113,8 +113,8 @@ export default {
     async getCategories() {
         try {
           const res = await this.$store.dispatch("getCategories");
-          // console.log(res.categories);
-          this.categories = res.categories
+          console.log(res.categories);
+          this.categories = res.categories.data
         } catch (error) {
           console.log(error);
         }
@@ -124,16 +124,20 @@ export default {
         const toggller = document.getElementById("tog");
         const sidee = document.getElementById('side-bar');
         const closeMenu = document.getElementById('close-menu');
+        const bodyEl = document.getElementsByTagName('body')[0]
         document.onclick = function(e) {
           if(e.target.id !== "tog" && e.target.id !== "side-bar"){
             sidee.classList.remove('active');
+            bodyEl.classList.remove("active");
           }
         }
         toggller.onclick = function(){
         sidee.classList.toggle('active');
+        bodyEl.classList.toggle("active")
         }
         closeMenu.onclick = function(){
         sidee.classList.remove('active');
+        bodyEl.classList.remove("active")
         }
 
         // Sticky
@@ -147,18 +151,6 @@ export default {
           navbar.classList.remove("sticky");
         }
       } 
-
-       // Sticky2
-      //   window.onscroll = function() {myFunction2()};
-      // var navbar2 = document.getElementById("navbar2");
-      // var sticky2 = navbar2.offsetTop;
-      // function myFunction2() {
-      //   if (window.pageYOffset > sticky2) {
-      //     navbar2.classList.add("sticky2")
-      //   } else {
-      //     navbar2.classList.remove("sticky2");
-      //   }
-      // } 
   },
   async created(){
     this.getCategories();
@@ -210,7 +202,7 @@ export default {
 font-size: 25px;
 }
 .mobile_nav {
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
   z-index: 999;
   position: fixed;
    left: -1000px;
@@ -221,14 +213,15 @@ font-size: 25px;
   max-height: 100vh;
 }
 .nav__menu {
-  transition: 2s;
-  width: 70%;
+  transition: 3s;
+  width: 80%;
 }
 .mobile_nav.active{
   left: 0px;
 }
 .nav__menu {
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .dropdown-menu.show {
   left: -150px;
