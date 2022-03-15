@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="d-flex align-items-center ">
-            <router-link to="/" class=" text-dark mr-1">ALL PRODUCTS </router-link>
+            <router-link to="/" class=" text-dark mr-1">ALL APPS </router-link>
             <span class="text-uppercase text-muted small"> >>{{ category.category_name }} </span> 
             <!-- <p class="text-info">More <i class="fa fa-angle-right" aria-hidden="true"></i> </p> -->
         </div>

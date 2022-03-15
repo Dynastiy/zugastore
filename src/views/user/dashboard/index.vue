@@ -77,9 +77,9 @@ export default {
     methods:{
         async getProducts(){
             const res = await helpers.getDevProducts();
-            console.log(res.dev_products);
-            this.all_products = res.dev_products
-            if(res.dev_products.length === 0 ){
+            console.log(res.dev_products.data);
+            this.all_products = res.dev_products.data
+            if(res.dev_products.data.length === 0 ){
                 this.no_apps = true
             }
         }

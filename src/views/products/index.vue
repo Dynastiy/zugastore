@@ -7,7 +7,7 @@
     <div>
       <div class="mt-4 d-flex align-items-center justify-content-between">
         <h6 class="">NEW APPS</h6>
-        <!-- <button class="see--more" @click="seeMoreNew"> See More </button> -->
+        <button class="see--more" @click="seeMoreNew"> See More </button>
       </div>
       <div class="hr"></div>
     <div class="new__apps">
@@ -41,7 +41,7 @@
     <!-- Popular Apps --> 
       <div class="mt-4 d-flex align-items-center justify-content-between">
         <h6 class="">POPULAR APPS</h6>
-       <!-- <button class="see--more" @click="seeMorePopular"> See More </button> -->
+       <button class="see--more" @click="seeMorePopular"> See More </button>
       </div>
       <div class="hr"></div>
 
@@ -77,7 +77,7 @@
     <!-- All Products --> 
     <div class="mt-4 d-flex align-items-center justify-content-between">
         <h6 class="">ALL APPS</h6>
-        <!-- <button class="see--more" @click="seeMoreAll"> See More </button> -->
+        <button class="see--more" @click="seeMoreAll"> See More </button>
       </div>
       <div class="hr"></div>
     <div class="new__apps">
@@ -131,17 +131,17 @@ export default {
     seeMorePopular(){
       // alert("Popular");
       this.filter = 'popular-apps'
-      this.$router.push({path:'/apps', query:{ filter: this.filter}})
+      this.$router.push({path:'/apps', query:{ type: this.filter}})
     },
     seeMoreAll(){
       // alert("All")
       this.filter = 'all-apps'
-      this.$router.push({path:'/apps', query:{ filter: this.filter}})
+      this.$router.push({path:'/apps', query:{ type: this.filter}})
     },
     seeMoreNew(){
       // alert("New")
       this.filter = 'new-apps'
-      this.$router.push({path:'/apps', query:{ filter: this.filter}})
+      this.$router.push({path:'/apps', query:{ type: this.filter}})
     },
     async getProducts() {
       try {

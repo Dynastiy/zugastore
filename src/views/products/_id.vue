@@ -673,6 +673,7 @@ export default {
       id: this.$route.params.id,
       reviews: [],
       rating: "",
+      similar_apps: []
     };
   },
 
