@@ -49,7 +49,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3 mb-3">
+        <div class="col mb-3">
           <label for="">License</label>
           <select
             v-model="license"
@@ -62,7 +62,7 @@
             <option value="paid">Paid</option>
           </select>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col mb-3">
           <label for="">Price</label>
           <input
             v-model="price"
@@ -74,7 +74,20 @@
             placeholder=""
           />
         </div>
-        <div class="col-md-3 mb-3">
+
+                <div class="col mb-3">
+          <label for="">Version</label>
+          <input
+            v-model="version"
+            type="number"
+            name=""
+            id=""
+            class="form-control"
+            placeholder=""
+          />
+        </div>
+        
+        <div class="col mb-3">
           <label for="">Select Tag</label> <br />
           <select v-model="tag_id" id="select-tag" class="form-control">
             <option value="">---</option>
@@ -207,6 +220,7 @@ export default {
       tag_id: "",
       category_id: "",
       company_name: "",
+      version: '',
       app_icon: null,
       app_file: null,
       photo_one: null,
@@ -283,6 +297,7 @@ export default {
         formData.append("tag_id", this.tag_id);
         formData.append("category_id", this.category_id);
         formData.append("company_name", this.company_name);
+        formData.append("version", this.version);
         formData.append("app_icon", this.app_icon);
         formData.append("app_file", this.app_file);
         formData.append("photo_one", this.photo_one);
@@ -311,6 +326,7 @@ export default {
         this.photo_two = "";
         this.photo_three = "";
         this.photo_four = "";
+        this.version = '',
         this.loading = false;
       } catch (error) {
         console.log(error);
@@ -329,6 +345,7 @@ export default {
         this.photo_two = "";
         this.photo_three = "";
         this.photo_four = "";
+        this.version = '';
         this.loading = false
       }
     },

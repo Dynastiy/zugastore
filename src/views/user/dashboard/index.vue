@@ -33,6 +33,7 @@
                 <!-- <th>Id</th> -->
                 <th>Name of App</th>
                 <th>Size</th>
+                <th>Version</th>
                 <th>Status</th>
                 <th>Actions</th>
               </tr>
@@ -44,14 +45,15 @@
 
                 <td> {{ product.file_size }} </td>
                 <!-- <td>Blockchain</td> -->
-                <!-- <td>Cryptocurrency</td> -->
+                <td>{{ product.version}} </td>
                 <td>
                   <span class="badge badge-warning p-1" v-if="product.status === 'pending' "> {{ product.status }} </span>
                   <span class="badge badge-success p-1" v-else-if="product.status === 'approved' ">{{ product.status }}</span>
                   <span class="badge badge-danger p-1" v-else>{{ product.status }}</span>
                 </td>
-                <td>
-                  <button class="view-more-button">View More</button>
+                <td class="d-flex " style="gap:10px">
+                  <router-link :to="'/product/' + product.id"><button class="view-more-button">View More</button> </router-link>
+                  <router-link :to="'/update-app/' +product.id "><button class="update">Update</button></router-link>
                 </td>
               </tr>
             </tbody>
@@ -113,5 +115,12 @@ export default {
 }
 table tr, table td {
     font-size: 0.8rem;
+}
+.update {
+    background: green;
+    color: var(--light);
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    border: none;
 }
 </style>

@@ -626,9 +626,9 @@
                         {{ review.reviewer_name.charAt(0) }}
                       </div>
                       <div>
-                        <h4 class="font-weight-bold text-capitalize">
+                        <h6 class="font-weight-bold text-capitalize">
                           {{ review.reviewer_name }}
-                        </h4>
+                        </h6>
                         <div class="d-flex align-items-center">
                           <star-rating
                             v-model="review.rating"
@@ -639,12 +639,12 @@
                             :show-rating="false"
                           ></star-rating>
                           <!-- <small class="text-muted">Stars</small> -->
-                          <small class="text-muted ml-4">
+                          <small class="text-muted ml-4" style="font-size: 0.8rem">
                             {{ review.created_at | formatDate }}
                           </small>
                         </div>
                         <div class="main_content mt-1">
-                          <p>{{ review.comment }}</p>
+                          <p class="small">{{ review.comment }}</p>
                         </div>
                       </div>
                     </div>
@@ -655,6 +655,55 @@
           </div>
         </div>
       </div>
+      <!-- Additional Information -->
+      <div class="hr2 mt-3"></div>
+            <div class="additional_info mt-3">
+              <h6 class="mb-3">Additional Information</h6>
+               <div style="display:grid; grid-template-columns: repeat(2, 1fr); grid-gap:1.2rem">
+                <div v-if="product.category" class="text-capitalize"> 
+                  <h6 class="font-weight-bold small">Category</h6>
+                  <p class="small">{{ product.category.category_name }}</p>
+                </div>
+                <div class="text-capitalize">
+                  <h6 class="font-weight-bold small">Platform</h6>
+                  <p class="small">{{ product.platform }}</p>
+                </div>
+                <div class="text-capitalize">
+                  <h6 class="font-weight-bold small">Developer</h6>
+                  <p class="small">{{ product.developer }}</p>
+                </div>
+                <div class="text-capitalize">
+                  <h6 class="font-weight-bold small">File Size</h6>
+                  <p class="small">{{ product.file_size }}</p>
+                </div>
+                <div class="text-capitalize">
+                  <h6 class="font-weight-bold small">Downloads</h6>
+                  <p class="small">{{ product.downloads }}</p>
+                </div>
+                <div class="text-capitalize">
+                  <h6 class="font-weight-bold small">License</h6> 
+                  <p class="small" v-if="product.license === 'paid'">
+                    ${{ product.price }}</p
+                  >
+                  <p class="small" v-else>FREE</p>
+                </div>
+                <div>
+                  <h6 class="font-weight-bold small">Last Updated</h6>
+                  <p class="small">{{ product.last_update | formatDate }}</p>
+                </div>
+              </div>
+          </div>
+    </div>
+
+
+    <div class="loader" v-show="loading">
+
+<div class="content--loader" >
+   <div class="loading">
+<p>Starting ...</p>
+      <span></span>
+   </div>
+</div>
     </div>
   </div>
 </template>
@@ -673,7 +722,8 @@ export default {
       id: this.$route.params.id,
       reviews: [],
       rating: "",
-      similar_apps: []
+      similar_apps: [],
+      loading: false
     };
   },
 
@@ -695,6 +745,7 @@ export default {
     },
     
     async downloadApp() {
+      // alert("Hello")
       // alert(this.id)
       // const res = await axios.get("http://zuga.divcommanifold.com/api/download-app/"+this.id)
       axios({
@@ -713,6 +764,7 @@ export default {
         })
         .finally(() => {
           this.getSingleProduct();
+         
         });
 
       // self.downloadProduct = res.data
@@ -874,7 +926,127 @@ p {
 a:hover {
   text-decoration: none;
 }
+/* body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #000;
+} */
 
+
+.content--loader {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content--loader .loading {
+  width: 80px;
+  height: 50px;
+  position: relative;
+}
+.content--loader .loading p {
+  top: 0;
+  padding: 0;
+  margin: 0;
+  color: #a67b3e;
+  font-family: "Oxygen", sans-serif;
+  animation: text 3.5s ease both infinite;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+@keyframes text {
+  0% {
+    letter-spacing: 1px;
+    transform: translateX(0px);
+  }
+  40% {
+    letter-spacing: 2px;
+    transform: translateX(26px);
+  }
+  80% {
+    letter-spacing: 1px;
+    transform: translateX(32px);
+  }
+  90% {
+    letter-spacing: 2px;
+    transform: translateX(0px);
+  }
+  100% {
+    letter-spacing: 1px;
+    transform: translateX(0px);
+  }
+}
+.content--loader .loading span {
+  background-color: #a67b3e;
+  border-radius: 50px;
+  display: block;
+  height: 16px;
+  width: 16px;
+  bottom: 0;
+  position: absolute;
+  transform: translateX(64px);
+  animation: loading 3.5s ease both infinite;
+}
+.content--loader .loading span:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: #d2b681;
+  border-radius: inherit;
+  animation: loading2 3.5s ease both infinite;
+}
+@keyframes loading {
+  0% {
+    width: 16px;
+    transform: translateX(0px);
+  }
+  40% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+  80% {
+    width: 16px;
+    transform: translateX(64px);
+  }
+  90% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+  100% {
+    width: 16px;
+    transform: translateX(0px);
+  }
+}
+@keyframes loading2 {
+  0% {
+    transform: translateX(0px);
+    width: 16px;
+  }
+  40% {
+    transform: translateX(0%);
+    width: 80%;
+  }
+  80% {
+    width: 100%;
+    transform: translateX(0px);
+  }
+  90% {
+    width: 80%;
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translateX(0px);
+    width: 16px;
+  }
+}
 @media (max-width: 990px) {
   .view {
     display: unset;

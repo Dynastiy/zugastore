@@ -32,7 +32,8 @@
         </router-link>
       </div>
     </div>
-    <nav>
+    </div>
+      <nav class="d-flex justify-content-center">
           <ul
             class="pagination pagination-md d-flex justify-content-center align-items-center mt-5" style="gap:20px"
           >
@@ -75,8 +76,7 @@
               </a>
             </li>
           </ul>
-        </nav>
-    </div>
+      </nav>
   </div>
 </template>
 
@@ -117,7 +117,7 @@ export default {
         this.apps_type = 'NEW APPS'
       }
     },
-    next(page) {
+    async next(page) {
       this.getProducts(page);
     },
   },
