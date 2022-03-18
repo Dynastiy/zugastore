@@ -749,11 +749,12 @@ export default {
       // alert(this.id)
       // const res = await axios.get("http://zuga.divcommanifold.com/api/download-app/"+this.id)
       axios({
-        url: "https://api.africanapp.store/api/download-app/" + this.id,
+        url: "https://api.africanapp.store/api/download-url/" + this.id,
         method: "GET",
         responseType: "blob",
       })
         .then((response) => {
+          // console.log(response.data);
           var fileURL = window.URL.createObjectURL(new Blob([response.data]));
           var fURL = document.createElement("a");
           console.log(response.data);
