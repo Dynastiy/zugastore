@@ -749,7 +749,7 @@ export default {
       // alert(this.id)
       // const res = await axios.get("http://zuga.divcommanifold.com/api/download-app/"+this.id)
       axios({
-        url: "https://api.africanapp.store/api/download-url/" + this.id,
+        url: "https://api.africanapp.store/api/download-app/" + this.id,
         method: "GET",
         responseType: "blob",
       })
